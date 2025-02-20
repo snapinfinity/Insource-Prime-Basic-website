@@ -96,7 +96,7 @@ const Header = () => {
                     </nav>
 
                     <div className="hidden md:block">
-                        <button
+                        {/* <button
                             onClick={() => handleNavigation('/#contact', 'contact')}
                             className={`px-6 py-2 rounded-md transition-colors ${scrolled > 10
                                     ? 'text-white bg-blue-900 hover:bg-blue-800'
@@ -104,7 +104,7 @@ const Header = () => {
                                 }`}
                         >
                             Connect Us
-                        </button>
+                        </button> */}
                     </div>
 
                     <button
