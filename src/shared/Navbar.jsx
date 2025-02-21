@@ -54,7 +54,7 @@ const Navbar = () => {
       <div className="container px-6 mx-auto lg:px-10">
         <div className="flex items-center justify-between py-3 lg:py-5">
           <a href="/">
-            <img className="w-[27%] cursor-pointer" src={img} alt="Logo" />
+            <img className="w-[150px] cursor-pointer" src={img} alt="Logo" />
           </a>
 
           <div className="flex items-center -mr-2 lg:hidden">
