@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X, ChevronDown } from 'lucide-react';
-import img from "../assets/INSOURCE.svg";
+import img from "../assets/logonew.svg";
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -51,13 +51,13 @@ const Header = () => {
                 } z-50`}
         >
 
-            <div className="container px-4 py-4 mx-auto">
+            <div className="container py-4 mx-auto">
                 <div className="flex items-center justify-between">
                     <div className="flex-shrink-0 cursor-pointer" onClick={() => handleNavigation('/', 'home')}>
                         <img
                             src={img}
                             alt="Logo"
-                            className={`w-auto h-14 transition-all duration-500 ease-in-out ${scrolled > 10 ? '' : 'brightness-0 invert'
+                            className={`w-auto h-16 transition-all duration-500 ease-in-out ${scrolled > 10 ? '' : 'brightness-0 invert'
                                 }`}
                         />
 

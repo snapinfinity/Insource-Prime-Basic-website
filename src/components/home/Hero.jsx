@@ -5,30 +5,30 @@ import img from "../../assets/hero_image.webp"
 const Hero = () => {
   return (
     <div className="relative  bg-[#061D41] overflow-hidden h-full">
-      <div className="container px-4 pt-20 mx-auto ">
-        <div className="grid items-center gap-12 lg:grid-cols-2">
-          <div className="space-y-8">
-            <h1 className="text-4xl font-bold text-white lg:text-6xl">
-            Seamless Bank Account 
+      <div className="container px-6 pt-20 mx-auto md:px-0 ">
+        <div className="grid items-center gap-12 pt-20 lg:pt-0 lg:grid-cols-2">
+          <div className="flex flex-col gap-10">
+            <h1 className="text-4xl font-bold text-white xl:text-6xl md:text-5xl">
+              Seamless Bank Account
               <br />
-              <span className="text-[#2874EB] mt-2 rounded-[23px] ">
-              Opening in the UAE
+              <span className="text-[#2874EB] pt-2 rounded-[23px] ">
+                Opening in the UAE
               </span>
             </h1>
 
             <p className="max-w-xl text-lg text-gray-300">
-            Fast, Secure & Hassle-Free Solutions for Individuals & Businesses
+              Fast, Secure & Hassle-Free Solutions for Individuals & Businesses
             </p>
 
-            <div className="space-y-4">
-              <button className="bg-[#2874EB] hover:bg-[#1d5fc7] text-white px-8 py-4 rounded-[53px] flex items-center gap-2 transition-colors ">
-             Contact Us
+            <div className="">
+              <button className="bg-[#2874EB] hover:bg-[#1d5fc7] text-white md:px-8 px-4 md:py-4 py-2 rounded-[53px] flex items-center gap-2 transition-colors ">
+                Contact Us
                 <ArrowUpRight size={20} />
               </button>
             </div>
           </div>
           <div>
-            <img src={img} alt="" className='h-full w-[80%]' />
+            <img src={img} alt="" className='h-full md:w-[80%] w-full' />
           </div>
 
 
