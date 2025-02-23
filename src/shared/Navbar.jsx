@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import img from "../assets/iplogo.png";
+// import img from "../assets/insourceicon.svg";
 
 const NavbarLink = ({ href, label, isActive }) => {
   return (
@@ -51,7 +52,7 @@ const Navbar = () => {
 
   return (
     <nav className="sticky top-0 z-20 bg-[#061D41] shadow-md">
-      <div className="container px-6 mx-auto lg:px-10">
+      <div className="container px-6 mx-auto lg:px-0">
         <div className="flex items-center justify-between py-3 lg:py-5">
           <a href="/">
             <img className="w-[150px] cursor-pointer" src={img} alt="Logo" />
