@@ -1,31 +1,31 @@
 import React from 'react';
 import { KeyRound, Banknote, CheckCircle, Award } from 'lucide-react'; // Import icons
-
+import img from "../../assets/test2.gif"
 const WhyChooseUs = () => {
     const services = [
         {
             title: "Easy Account Opening",
             description: "Hassle-free process for all nationalities and businesses.",
-            image: "/assets/easy-account.png",
+            image: img,
             icon: KeyRound
         },
         {
             title: "Direct Access to UAE’s Top Banks",
             description: "Exclusive banking network for faster approvals.",
-            image: "/assets/top-banks.png",
+            image:img,
             icon: Banknote // Use Banknote icon
         },
         {
             title: "Fast Processing & Full Compliance",
             description: "Navigating regulations for smooth onboarding.",
-            image: "/assets/fast-processing.png",
+            image:img,
             icon: CheckCircle // Use CheckCircle icon
         },
         {
             title: "20+ Years of Expertise",
             description: "Banking specialists guiding you at every step.",
-            image: "/assets/expertise.png",
-            icon: Award 
+            image: img,
+            icon: Award
         }
     ];
 
@@ -50,12 +50,12 @@ const WhyChooseUs = () => {
                                     }`}
                             >
                                 <div className={` flex items-center `}>
-                                    <item.icon className="w-14 h-14 mr-2 text-[#0E4DAA]" />
-                                    {/* <img
-          className="w-[86px] h-[86px] rounded-[15px] mx-2"
-          src={item.image}
-          alt={item.title}
-        /> */}
+                                    {/* <item.icon className="w-14 h-14 mr-2 text-[#0E4DAA]" /> */}
+                                    <img
+                                        className="w-[80%] rounded-[15px] mx-2"
+                                        src={item.image}
+                                        alt={item.title}
+                                    />
                                 </div>
                                 <p
                                     className={`mt-2 xl:text-2xl md:text-xl text-lg md:${index % 2 === 0 ? "text-rig" : "text-left"
@@ -63,7 +63,7 @@ const WhyChooseUs = () => {
                                 >
                                     {item.description}
                                 </p>
-                        
+
                             </div>
                         ))}
                     </div>

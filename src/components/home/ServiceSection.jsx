@@ -1,5 +1,7 @@
 import React from 'react';
 import { Search, BarChart3, Wallet, Users } from 'lucide-react';
+import { fadeIn, fadeOut } from '../../shared/animation/Motion';
+import { motion } from "framer-motion";
 
 const ServiceSection = () => {
     const services = [
@@ -47,16 +49,24 @@ const ServiceSection = () => {
     ];
 
     return (
-        <div className="py-20 text-white bg-[#061D41]">
-            <div className="container px-10 mx-auto text-left md:text-center ">
+        <div
+            className="py-20 text-white bg-[#061D41]">
+            <motion.div
+                variants={fadeIn("right", 0.1)}
+                initial="hidden"
+                whileInView={"show"}
+                className="container px-10 mx-auto text-left md:text-center">
                 <h2 className="pb-12 lg:text-[53px] text-[30px] font-semibold">What we can help you with</h2>
-                <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+                <div className="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-4">
                     {services.map((service, index) => (
-                        <div 
-                            key={index} 
-                            className="flex flex-col justify-between p-6 border rounded-[20px] transition-transform duration-300 transform hover:scale-105"
-                        > 
-                            <div> 
+                        <motion.div
+                            variants={fadeOut("right", "spring", index * 0.5, 0.75)}
+                            initial="hidden"
+                            whileInView={"show"}
+                            key={index}
+                            className="flex flex-col justify-between p-6 border rounded-[20px] transform transition-transform duration-300 scale-100 hover:scale-105"
+                        >
+                            <div>
                                 <div className="flex justify-center mb-4">
                                     <service.icon className="w-8 h-8 text-[#0E4DAA]" />
                                 </div>
@@ -75,10 +85,10 @@ const ServiceSection = () => {
                                     Read More
                                 </button>
                             </div>
-                        </div>
+                        </motion.div>
                     ))}
                 </div>
-            </div>
+            </motion.div>
         </div>
     );
 };

@@ -14,7 +14,7 @@ const Home = () => {
       {/* <Aboutus/> */}
       <ServiceSection />
       <WhyChooseUs />
-      {/* <ReviewSection/> */}
+      <ReviewSection/>
     </>
   )
 }
