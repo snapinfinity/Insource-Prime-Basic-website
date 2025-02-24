@@ -17,31 +17,16 @@ const WhyBanking = () => {
             icon: <Banknote className="w-8 h-8 text-slate-700" />,
             title: "Access to the Right Banking Solutions",
             description: "With various banks offering different services, choosing the right one can be overwhelming. Consultants assess your needs and connect you with banks that align with your financial goals.",
-        },
-        // {
-        //     icon: <CheckCircle className="w-8 h-8 text-slate-700" />,
-        //     title: "Faster Approvals & Hassle-Free Process",
-        //     description: "Through established relationships with banks, consultancies facilitate faster account approvals and smoother transactions, avoiding unnecessary delays.",
-        // },
-        // {
-        //     icon: <Briefcase className="w-8 h-8 text-slate-700" />,
-        //     title: "Tailored Solutions for Businesses & Individuals",
-        //     description: "Whether you're an entrepreneur, a high-net-worth individual, or an expatriate, a consultancy provides customized banking solutions that fit your specific financial needs.",
-        // },
-        // {
-        //     icon: <ShieldCheck className="w-8 h-8 text-slate-700" />,
-        //     title: "Confidential & Secure Assistance",
-        //     description: "Consultancies ensure your financial information is handled professionally, maintaining high levels of confidentiality and security.",
-        // },
+        }
     ];
     
 
     return (
         <div   className='relative py-10 bg-center bg-no-repeat bg-cover'  
                 style={{ backgroundImage: `url(${bg1})` }}>
-            <div className="container px-10 py-20 mx-auto">
-                <div className="grid grid-cols-2 gap-6">
-                    <div className="text-[50px] flex justify-center items-center font-bold text-[#061D41]">
+            <div className="container px-10 py-10 mx-auto md:py-20">
+                <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+                    <div className="xl:text-[50px] text-[40px] flex justify-center items-center font-bold text-[#061D41]">
                         Why a Banking Consultancy?
                     </div>
                     <div className="text-lg leading-relaxed text-slate-600">
@@ -53,7 +38,7 @@ const WhyBanking = () => {
                         {features.map((feature, index) => (
                             <div
                                 key={index}
-                                className="flex flex-col items-center p-6 text-center transition-shadow duration-300 bg-white rounded-lg shadow-sm hover:shadow-md"
+                                className="flex flex-col items-center p-4 text-center transition-shadow duration-300 bg-white rounded-lg shadow-sm xl:p-6 hover:shadow-md"
                             >
                                 <div className="flex items-center justify-center w-16 h-16 mb-4 rounded-full bg-slate-100">
                                     {feature.icon}
