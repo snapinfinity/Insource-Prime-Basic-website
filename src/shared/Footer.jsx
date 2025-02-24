@@ -1,5 +1,5 @@
 import React from 'react';
-import img from "../assets/insourceblack.png";
+import img from "../assets/insourcewhite-cropped.svg";
 import { Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
 
 const Footer = () => {

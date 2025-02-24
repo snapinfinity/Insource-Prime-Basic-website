@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import img from "../assets/insourceblack.png";
+import img from "../assets/insourcewhite-cropped.svg";
 // import img from "../assets/insourceicon.svg";
 
 const NavbarLink = ({ href, label, isActive }) => {
