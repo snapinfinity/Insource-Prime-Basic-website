@@ -1,11 +1,11 @@
 import React from 'react';
-import img from "../assets/iplogo.png";
+import img from "../assets/insourceblack.png";
 import { Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
 
 const Footer = () => {
   return (
     <footer className="py-16 text-white bg-gradient-to-r from-black to-[#061D41]">
-      <div className="container px-4 mx-auto">
+      <div className="container px-10 mx-auto">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
      
           <div className="space-y-4">

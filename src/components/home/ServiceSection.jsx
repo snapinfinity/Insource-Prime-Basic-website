@@ -48,7 +48,7 @@ const ServiceSection = () => {
 
     return (
         <div className="py-20 text-white bg-[#061D41]">
-            <div className="container px-6 mx-auto text-left md:text-center md:px-0">
+            <div className="container px-10 mx-auto text-left md:text-center ">
                 <h2 className="pb-12 lg:text-[53px] text-[30px] font-semibold">What we can help you with</h2>
                 <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
                     {services.map((service, index) => (
@@ -71,7 +71,7 @@ const ServiceSection = () => {
                                 </ul>
                             </div>
                             <div className='flex justify-center'>
-                                <button className="px-4 py-2 mt-4 font-semibold text-white bg-[#0E4DAA] rounded-[20px] hover:bg-purple-700 w-[200px]">
+                                <button className="px-4 py-2 mt-4 font-semibold text-white bg-[#0E4DAA] rounded-[20px] hover:bg-[#0E4DAA] w-[200px]">
                                     Read More
                                 </button>
                             </div>

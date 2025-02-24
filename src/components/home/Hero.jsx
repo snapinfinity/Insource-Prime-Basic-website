@@ -5,7 +5,7 @@ import img from "../../assets/hero.png"
 const Hero = () => {
   return (
     <div className='bg-[#061D41] relative '>
-      <div className='container flex flex-col px-6 pt-10 mx-auto lg:items-center lg:px-0 md:flex-row lg:pt-0'>
+      <div className='container flex flex-col px-10 pt-10 mx-auto lg:items-center md:flex-row lg:pt-0'>
         <div className="flex flex-col gap-10 md:w-1/2">
           <h1 className="text-4xl font-bold text-white xl:text-6xl ">
             Seamless Bank Account
