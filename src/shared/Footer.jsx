@@ -1,6 +1,34 @@
 import React from 'react';
 import img from "../assets/insourcewhite-cropped.svg";
 import { Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
+import { MapPin, Phone, Mail, Globe } from "lucide-react";
+
+<div className="space-y-4">
+  <h3 className="text-xl font-semibold">Contact Us</h3>
+  
+  <p className="flex items-center gap-2 text-gray-300">
+    <MapPin size={20} className="text-gray-300" /> [Your Office Address]
+  </p>
+
+  <p className="flex items-center gap-2 text-gray-300">
+    <Phone size={20} className="text-gray-300" /> +971 50 859 0446
+  </p>
+
+  <p className="flex items-center gap-2 text-gray-300">
+    <Mail size={20} className="text-gray-300" />
+    <a href="mailto:md@insourceprime.com" className="hover:text-gray-300">
+      md@insourceprime.com
+    </a>
+  </p>
+
+  <p className="flex items-center gap-2 text-gray-300">
+    <Globe size={20} className="text-gray-300" />
+    <a href="https://www.insourceprime.com" target="_blank" className="hover:text-gray-300">
+      www.insourceprime.com
+    </a>
+  </p>
+</div>
+
 
 const Footer = () => {
   return (
@@ -25,13 +53,33 @@ const Footer = () => {
             </ul>
           </div>
 
-          <div className="space-y-4">
-            <h3 className="text-xl font-semibold">Contact Us</h3>
-            <p className="text-gray-300">📍 [Your Office Address]</p>
-            <p className="text-gray-300">📞 +971 50 859 0446</p>
-            <p className="text-gray-300">📧 <a href="mailto:md@insourceprime.com" className="hover:text-gray-300">md@insourceprime.com</a></p>
-            <p className="text-gray-300">🌐<a href="https://www.insourceprime.com" target="_blank" className="hover:text-gray-300">www.insourceprime.com</a></p>
-          </div>
+
+<div className="space-y-4">
+  <h3 className="text-xl font-semibold">Contact Us</h3>
+  
+  <p className="flex items-center gap-2 text-gray-300">
+    <MapPin size={20} className="text-gray-300" /> [Your Office Address]
+  </p>
+
+  <p className="flex items-center gap-2 text-gray-300">
+    <Phone size={20} className="text-gray-300" /> +971 50 859 0446
+  </p>
+
+  <p className="flex items-center gap-2 text-gray-300">
+    <Mail size={20} className="text-gray-300" />
+    <a href="mailto:md@insourceprime.com" className="hover:text-gray-300">
+      md@insourceprime.com
+    </a>
+  </p>
+
+  <p className="flex items-center gap-2 text-gray-300">
+    <Globe size={20} className="text-gray-300" />
+    <a href="https://www.insourceprime.com" target="_blank" className="hover:text-gray-300">
+      www.insourceprime.com
+    </a>
+  </p>
+</div>
+
 
           <div className="space-y-4">
             <h3 className="text-2xl font-bold">Follow Us</h3>

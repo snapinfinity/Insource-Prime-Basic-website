@@ -8,14 +8,14 @@ import ReviewSection from '../components/home/ReviewSection'
 
 const Home = () => {
   return (
-    <>
+    <div className='overflow-hidden'>
       <Hero />
       <WhyBanking />
       {/* <Aboutus/> */}
       <ServiceSection />
       <WhyChooseUs />
       <ReviewSection/>
-    </>
+    </div>
   )
 }
 

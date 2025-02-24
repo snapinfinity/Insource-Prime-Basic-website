@@ -5,7 +5,14 @@ import img from "../../assets/hero.png";
 
 const Hero = () => {
   return (
-    <div className='bg-[#061D41] relative overflow-hidden'>
+    <div className='bg-[#061D41] relative overflow-hidden'
+    //  style={{
+    //             backgroundImage: `linear-gradient(rgba(6, 29, 65, 0.9), rgba(6, 29, 65, 0.9)), url(${bg})`,
+    //             backgroundSize: 'cover',
+    //             backgroundPosition: 'center',
+    //             backgroundRepeat: 'no-repeat'
+    //         }}
+            >
       <div className='container flex flex-col px-10 pt-10 mx-auto lg:items-center md:flex-row lg:pt-0'>
         <motion.div 
           initial={{ opacity: 0, x: -50 }} 

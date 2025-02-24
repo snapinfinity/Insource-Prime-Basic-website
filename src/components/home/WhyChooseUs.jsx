@@ -1,38 +1,56 @@
 import React from 'react';
-import { KeyRound, Banknote, CheckCircle, Award } from 'lucide-react'; // Import icons
+import { KeyRound, Banknote, CheckCircle, Award } from 'lucide-react';
 import img from "../../assets/test2.gif"
+import img1 from "../../assets/gif.gif"
+import img2 from "../../assets/new1.gif"
+import img3 from "../../assets/new3.gif"
+import img4 from "../../assets/new2.gif"
+import bg from "../../assets/linebg.png"
 const WhyChooseUs = () => {
-    const services = [
+    const features = [
         {
             title: "Easy Account Opening",
             description: "Hassle-free process for all nationalities and businesses.",
-            image: img,
-            icon: KeyRound
+            image: img2,
+            icon: KeyRound,
+            width: "50%"
         },
         {
             title: "Direct Access to UAE’s Top Banks",
             description: "Exclusive banking network for faster approvals.",
-            image:img,
-            icon: Banknote // Use Banknote icon
+            image: img3,
+            icon: Banknote,
+            width: "70%"
         },
         {
             title: "Fast Processing & Full Compliance",
             description: "Navigating regulations for smooth onboarding.",
-            image:img,
-            icon: CheckCircle // Use CheckCircle icon
+            image: img4,
+            icon: CheckCircle,
+            width: "65%"
         },
         {
             title: "20+ Years of Expertise",
             description: "Banking specialists guiding you at every step.",
-            image: img,
-            icon: Award
+            image: img1,
+            icon: Award,
+            width: "70%"
         }
     ];
 
+
     return (
-        <div className="bg-[#061D41] relative overflow-hidden py-16 text-white">
-            <div className="container px-6 mx-auto lg:px-0">
-                <div className="mb-16 text-left md:text-center">
+        <div className="bg-[#061D41] relative overflow-hidden py-16 text-white " style={{
+            backgroundImage: `linear-gradient(rgba(6, 29, 65, 0.9), rgba(6, 29, 65, 0.9)), url(${bg})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat'
+        }}>
+            
+
+
+            <div className="container px-4 mx-auto sm:px-6 lg:px-8">
+            <div className="mb-16 text-left md:text-center">
                     <h2 className="mb-6 text-4xl font-bold md:text-5xl">
                         Why Choose Us?
                     </h2>
@@ -40,36 +58,28 @@ const WhyChooseUs = () => {
                         We provide seamless bank account opening services with expertise and efficiency.
                     </p>
                 </div>
-                <div className='flex justify-center w-full '>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-8 xl:py-14 w-[70%]">
-                        {services?.map((item, index) => (
-                            <div
-                                key={index}
-                                className={`flex items-center gap-5 md:${index % 2 === 0 ? "flex-row-reverse" : "flex-row"
-                                    }`}
-                            >
-                                <div className={` flex items-center `}>
-                                    {/* <item.icon className="w-14 h-14 mr-2 text-[#0E4DAA]" /> */}
-                                    <img
-                                        className="w-[80%] rounded-[15px] mx-2"
-                                        src={item.image}
-                                        alt={item.title}
+                <div className="flex flex-wrap justify-center">
+                    <div className="grid w-full max-w-6xl grid-cols-1 sm:grid-cols-2 gap-x-8 sm:gap-x-12 md:gap-x-16 lg:gap-x-20 gap-y-10 sm:gap-y-12 md:gap-y-16 lg:gap-y-20">
+                        {features.map((feature, index) => (
+                            <div key={index} className="flex flex-col items-center text-center sm:flex-row sm:items-start md:items-center sm:text-left">
+                                <div className="mb-4 sm:mb-0 sm:mr-4 md:mr-6">
+                                    <img 
+                                    
+                                        src={feature.image} 
+                                        alt={feature.title}
+                                        className="object-cover w-20 h-20 sm:w-20 sm:h-20 md:w-24 md:h-24"
                                     />
                                 </div>
-                                <p
-                                    className={`mt-2 xl:text-2xl md:text-xl text-lg md:${index % 2 === 0 ? "text-rig" : "text-left"
-                                        } text-white font-outfit`}
-                                >
-                                    {item.description}
-                                </p>
-
+                                <div>
+                                    <h3 className="text-xl font-bold sm:text-1xl md:text-2xl">{feature.title}</h3>
+                                    <p className="mt-2 text-sm md:text-base">{feature.description}</p>
+                                </div>
                             </div>
                         ))}
                     </div>
                 </div>
-
             </div>
+
         </div>
     );
 };
