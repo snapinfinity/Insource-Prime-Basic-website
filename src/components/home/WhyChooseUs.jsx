@@ -5,7 +5,7 @@ import img1 from "../../assets/gif.gif"
 import img2 from "../../assets/new1.gif"
 import img3 from "../../assets/new3.gif"
 import img4 from "../../assets/new2.gif"
-import bg from "../../assets/bg_overlay.png"
+import bg from "../../assets/wave.png"
 const WhyChooseUs = () => {
     const features = [
         {
@@ -40,9 +40,16 @@ const WhyChooseUs = () => {
 
 
     return (
-        <div className="relative py-16 overflow-hidden text-white " >
+        <div className="relative pt-10 pb-20 overflow-hidden text-white " 
+        // style={{
+        //     backgroundImage: `url(${bg})`,
+        //     backgroundSize: 'cover',
+        //     backgroundPosition: 'center',
+        //     backgroundRepeat: 'no-repeat'
+        // }}
+        >
             <div className="container px-10 mx-auto ">
-                <div className="mb-16 text-center">
+            <div className="mb-16 text-center">
                     <h2 className="mb-6 text-4xl font-bold md:text-5xl">
                         Why Choose Us?
                     </h2>
@@ -55,9 +62,9 @@ const WhyChooseUs = () => {
                         {features.map((feature, index) => (
                             <div key={index} className="flex flex-col items-center text-center sm:flex-row sm:items-start md:items-center sm:text-left">
                                 <div className="mb-4 sm:mb-0 sm:mr-4 md:mr-6">
-                                    <img
-
-                                        src={feature.image}
+                                    <img 
+                                    
+                                        src={feature.image} 
                                         alt={feature.title}
                                         className="object-cover w-20 h-20 sm:w-20 sm:h-20 md:w-24 md:h-24"
                                     />

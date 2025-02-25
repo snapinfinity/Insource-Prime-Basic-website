@@ -14,7 +14,7 @@ const Home = () => {
       <div className='overflow-hidden'>
         <Hero />
         <WhyBanking />
-        <div className="relative py-16 overflow-hidden text-white bg-gradient-to-r from-black to-[#061D41]" style={{
+        <div className="relative  overflow-hidden text-white bg-gradient-to-r from-black to-[#061D41]" style={{
           backgroundImage: `url(${bg})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
