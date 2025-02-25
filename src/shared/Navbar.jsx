@@ -18,6 +18,7 @@ const NavbarLink = ({ href, label, isActive }) => {
   );
 };
 
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const mobileMenuRef = useRef(null);
@@ -32,6 +33,21 @@ const Navbar = () => {
     { href: "/services", label: "Services" },
     { href: "/contact-us", label: "Contact Us" },
   ];
+  const [isScrolled, setIsScrolled] = useState(false);
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -50,10 +66,12 @@ const Navbar = () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+  
+
 
   return (
-    <nav className="sticky top-0 z-20 bg-transparent">
-      <BackgroundWrapper bg={bg}>
+    <div className={`sticky top-0 z-20 ${isScrolled ? "bg-[#10153D] shadow-md" : "lg:shadow-none shadow-md bg-[#10153D]"}`}>
+      {/* <BackgroundWrapper bg={bg}> */}
         <div className="container px-10 mx-auto">
           <div className="flex items-center justify-between py-3 lg:py-5">
             <a href="/">
@@ -110,8 +128,8 @@ const Navbar = () => {
             </div>
           </div>
         </div>
-      </BackgroundWrapper>
-    </nav>
+      {/* </BackgroundWrapper> */}
+    </div>
   );
 };
 
