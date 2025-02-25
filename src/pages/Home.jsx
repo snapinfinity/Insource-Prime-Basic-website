@@ -10,7 +10,7 @@ import bg from "../assets/bg_overlay.png";
 
 const Home = () => {
   return (
-    <BackgroundWrapper bg={bg}>
+    // <BackgroundWrapper bg={bg}>
       <div className='overflow-hidden'>
         <Hero />
         <WhyBanking />
@@ -26,7 +26,7 @@ const Home = () => {
         <ReviewSection />
 
       </div>
-    </BackgroundWrapper>
+    // </BackgroundWrapper>
   )
 }
 

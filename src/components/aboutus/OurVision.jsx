@@ -1,5 +1,5 @@
 import React from "react";
-import bg from "../../assets/get_started.jpg"; // Ensure the correct path
+import bg from "../../assets/get_started.jpg"; 
 
 const GetStarted = () => {
     return (

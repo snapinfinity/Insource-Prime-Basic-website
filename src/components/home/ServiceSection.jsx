@@ -49,7 +49,14 @@ const ServiceSection = () => {
     ];
 
     return (
-        <div className="py-20 text-white ">
+        <div className="py-20 text-white bg-[#10153D] bg-opacity-100"  style={{
+            backgroundImage: `url(${bg})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            position: "relative",
+          }}>
+
             <div className="container px-10 mx-auto text-left md:text-center">
                 <h2 className="pb-12 lg:text-[53px] text-[30px] font-semibold">
                     What we can help you with
