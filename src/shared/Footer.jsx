@@ -1,41 +1,33 @@
 import React from 'react';
 import img from "../assets/insourcewhite-cropped.svg";
-import { Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
-import { MapPin, Phone, Mail, Globe } from "lucide-react";
+import { Facebook, Twitter, Instagram, Linkedin, MapPin, Phone, Mail, Globe } from "lucide-react";
 
-<div className="space-y-4">
-  <h3 className="text-xl font-semibold">Contact Us</h3>
-  
-  <p className="flex items-center gap-2 text-gray-300">
-    <MapPin size={20} className="text-gray-300" /> [Your Office Address]
-  </p>
+const contactInfo = [
+  { icon: <MapPin size={20} className="text-gray-300" />, text: "[Your Office Address]" },
+  { icon: <Phone size={20} className="text-gray-300" />, text: "+971 50 859 0446" },
+  { icon: <Mail size={20} className="text-gray-300" />, text: "md@insourceprime.com", link: "mailto:md@insourceprime.com" },
+  { icon: <Globe size={20} className="text-gray-300" />, text: "www.insourceprime.com", link: "https://www.insourceprime.com" }
+];
 
-  <p className="flex items-center gap-2 text-gray-300">
-    <Phone size={20} className="text-gray-300" /> +971 50 859 0446
-  </p>
+const quickLinks = [
+  { name: "Home", link: "#" },
+  { name: "About Us", link: "#" },
+  { name: "Services", link: "#" },
+  { name: "Contact Us", link: "#" }
+];
 
-  <p className="flex items-center gap-2 text-gray-300">
-    <Mail size={20} className="text-gray-300" />
-    <a href="mailto:md@insourceprime.com" className="hover:text-gray-300">
-      md@insourceprime.com
-    </a>
-  </p>
-
-  <p className="flex items-center gap-2 text-gray-300">
-    <Globe size={20} className="text-gray-300" />
-    <a href="https://www.insourceprime.com" target="_blank" className="hover:text-gray-300">
-      www.insourceprime.com
-    </a>
-  </p>
-</div>
-
+const socialLinks = [
+  { icon: <Facebook />, link: "#" },
+  { icon: <Twitter />, link: "#" },
+  { icon: <Instagram />, link: "#" },
+  { icon: <Linkedin />, link: "#" }
+];
 
 const Footer = () => {
   return (
     <footer className="py-16 text-white bg-gradient-to-r from-black to-[#061D41]">
       <div className="container px-10 mx-auto">
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
-     
+        <div className="hidden grid-cols-1 gap-8 md:grid md:grid-cols-4 ">
           <div className="space-y-4">
             <img className="w-[150px] cursor-pointer" src={img} alt="Logo" />
             <p className="text-gray-300">
@@ -46,66 +38,106 @@ const Footer = () => {
           <div className="space-y-4">
             <h3 className="text-xl font-semibold">Quick Links</h3>
             <ul className="space-y-2">
-              <li><a href="#" className="hover:text-gray-300">Home</a></li>
-              <li><a href="#" className="hover:text-gray-300">About Us</a></li>
-              <li><a href="#" className="hover:text-gray-300">Services</a></li>
-              <li><a href="#" className="hover:text-gray-300">Contact Us</a></li>
+              {quickLinks.map((link, index) => (
+                <li key={index}>
+                  <a href={link.link} className="hover:text-gray-300">
+                    {link.name}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
 
-<div className="space-y-4">
-  <h3 className="text-xl font-semibold">Contact Us</h3>
-  
-  <p className="flex items-center gap-2 text-gray-300">
-    <MapPin size={20} className="text-gray-300" /> [Your Office Address]
-  </p>
-
-  <p className="flex items-center gap-2 text-gray-300">
-    <Phone size={20} className="text-gray-300" /> +971 50 859 0446
-  </p>
-
-  <p className="flex items-center gap-2 text-gray-300">
-    <Mail size={20} className="text-gray-300" />
-    <a href="mailto:md@insourceprime.com" className="hover:text-gray-300">
-      md@insourceprime.com
-    </a>
-  </p>
-
-  <p className="flex items-center gap-2 text-gray-300">
-    <Globe size={20} className="text-gray-300" />
-    <a href="https://www.insourceprime.com" target="_blank" className="hover:text-gray-300">
-      www.insourceprime.com
-    </a>
-  </p>
-</div>
-
+          <div className="space-y-4">
+            <h3 className="text-xl font-semibold">Contact Us</h3>
+            {contactInfo.map((item, index) => (
+              <p key={index} className="flex items-center gap-2 text-gray-300">
+                {item.icon}
+                {item.link ? (
+                  <a href={item.link} target="_blank" rel="noopener noreferrer" className="hover:text-gray-300">
+                    {item.text}
+                  </a>
+                ) : (
+                  item.text
+                )}
+              </p>
+            ))}
+          </div>
 
           <div className="space-y-4">
             <h3 className="text-2xl font-bold">Follow Us</h3>
-           
-
             <div className="flex pt-4 space-x-4">
-              <a href="#" className="text-2xl text-gray-300 hover:text-white">
-                <Facebook />
-              </a>
-              <a href="#" className="text-2xl text-gray-300 hover:text-white">
-                <Twitter />
-              </a>
-              <a href="#" className="text-2xl text-gray-300 hover:text-white">
-                <Instagram />
-              </a>
-              <a href="#" className="text-2xl text-gray-300 hover:text-white">
-                <Linkedin />
-              </a>
+              {socialLinks.map((social, index) => (
+                <a key={index} href={social.link} className="text-2xl text-gray-300 hover:text-white">
+                  {social.icon}
+                </a>
+              ))}
             </div>
           </div>
         </div>
 
-       
+
+
+        <div className="flex flex-col gap-10 md:hidden">
+          <div className="space-y-4">
+            <img className="w-[150px] cursor-pointer" src={img} alt="Logo" />
+            <p className="text-gray-300">
+              Seamless Bank Account Opening in the UAE
+            </p>
+          </div>
+          <div className='grid grid-cols-2 '>
+            <div className="space-y-4">
+              <h3 className="text-xl font-semibold">Quick Links</h3>
+              <ul className="space-y-2">
+                {quickLinks.map((link, index) => (
+                  <li key={index}>
+                    <a href={link.link} className="hover:text-gray-300">
+                      {link.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="space-y-4 ">
+              <h3 className="text-xl font-semibold">Contact Us</h3>
+              {contactInfo.map((item, index) => (
+                <p key={index} className="flex items-center gap-2 text-gray-300 break-all">
+                  {item.icon}
+                  {item.link ? (
+                    <a
+                      href={item.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="break-all hover:text-gray-300"
+                    >
+                      {item.text}
+                    </a>
+                  ) : (
+                    <span className="break-all">{item.text}</span>
+                  )}
+                </p>
+
+              ))}
+            </div>
+          </div>
+
+
+          <div className="flex flex-col items-center justify-center">
+            {/* <h3 className="text-2xl font-bold">Follow Us</h3> */}
+            <div className="flex gap-8 pt-4">
+              {socialLinks.map((social, index) => (
+                <a key={index} href={social.link} className="text-2xl text-gray-300 hover:text-white">
+                  {social.icon}
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+
         <div className="pt-8 mt-16 text-center border-t border-gray-700">
           <p className="text-gray-400">
-          insourceprime © 2025 All rights reserved
+            insourceprime © 2025 All rights reserved
           </p>
         </div>
       </div>
