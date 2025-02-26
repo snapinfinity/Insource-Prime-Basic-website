@@ -3,9 +3,21 @@ import { Link, useLocation } from "react-router-dom";
 import img from "../assets/insourcewhite-cropped.svg";
 
 const NavbarLink = ({ href, label, isActive }) => {
+  const handleClick = () => {
+    setTimeout(() => {
+      const heroSection = document.getElementById("hero");
+      if (heroSection) {
+        heroSection.scrollIntoView({ behavior: "smooth" });
+      } else {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    }, 100); // Delay to allow navigation first
+  };
+
   return (
     <Link
       to={href}
+      onClick={handleClick}
       className={`inline-flex items-center px-1 pt-1 xl:text-[18px] text-[15px] font-[300] cursor-pointer relative ${
         isActive
           ? "text-white hover:text-white after:absolute after:bottom-[-8px] after:left-0 after:w-full after:h-[2px] after:bg-white"
@@ -103,7 +115,7 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* Mobile Menu - Always in DOM but transformed based on state */}
+        {/* Mobile Menu */}
         <div
           ref={mobileMenuRef}
           className={`fixed inset-y-0 right-0 bg-[#10153D] opacity-90 w-[200px] z-20 transform rounded-l-2xl shadow-2xl flex flex-col items-start px-4 py-6 space-y-4 lg:hidden transition-transform duration-300 ease-in-out ${
@@ -113,11 +125,7 @@ const Navbar = () => {
           <div className="pt-12">
             {links.map((link) => (
               <div className="py-2" key={link.href}>
-                <NavbarLink
-                  href={link.href}
-                  label={link.label}
-                  isActive={location.pathname === link.href}
-                />
+                <NavbarLink href={link.href} label={link.label} isActive={location.pathname === link.href} />
               </div>
             ))}
           </div>

@@ -41,7 +41,7 @@ const PageContent = () => {
     return (
         <div className="container px-10 py-16 mx-auto">
             <div className="flex flex-col items-center gap-12 md:flex-row">
-                {/* Image Section */}
+       
                 <motion.div
                     variants={fadeInLeft}
                     initial="hidden"
@@ -51,8 +51,6 @@ const PageContent = () => {
                 >
                     <img src={img} alt="Credit Card Mockup" className="" />
                 </motion.div>
-
-                {/* Text Content */}
                 <motion.div
                     variants={fadeInRight}
                     initial="hidden"
@@ -71,7 +69,6 @@ const PageContent = () => {
                         We specialize in handling complex banking cases, ensuring that businesses and individuals can access <span className="font-semibold">reliable financial solutions</span> with minimal effort.
                     </p>
 
-                    {/* Stats Section */}
                     <div className="grid grid-cols-2 gap-4 mt-8">
                         <StatCard
                             icon={<Shield className="w-8 h-8 text-blue-600" />}

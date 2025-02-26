@@ -4,11 +4,15 @@ import { fadeIn, fadeOut } from '../../shared/animation/Motion';
 import { motion } from "framer-motion";
 import bg from "../../assets/bg_overlay.png"
 import { useNavigate } from 'react-router-dom';
+import img from "../../assets/offshore Banking.svg"
+import img1 from "../../assets/Personal Banking.svg"
+import img2 from "../../assets/private banking.svg"
+import img3 from "../../assets/Corporate bank account.svg"
 const ServiceSection = () => {
     const navigate = useNavigate();
     const services = [
         {
-            icon: Wallet,
+            icon: img3,
             title: 'Corporate Bank Account Opening',
             description: 'Business bank accounts for Freezone & Mainland companies. Expertise in dealing with all major UAE banks.',
             details: [
@@ -19,7 +23,7 @@ const ServiceSection = () => {
             ],
         },
         {
-            icon: BarChart3,
+            icon: img,
             title: 'Offshore Bank Account Opening',
             description: 'Offshore banking solutions for BVI companies and international businesses. Secure, tax-efficient banking options.',
             details: [
@@ -29,7 +33,7 @@ const ServiceSection = () => {
             ],
         },
         {
-            icon: Users,
+            icon: img2,
             title: 'Private Banking',
             description: 'Exclusive Private Banking onboarding in DIFC & Local Banks. Personalized financial solutions with dedicated wealth advisors.',
             details: [
@@ -39,7 +43,7 @@ const ServiceSection = () => {
             ],
         },
         {
-            icon: Search,
+            icon: img1,
             title: 'Personal Bank Account Opening',
             description: 'Hassle-free account opening for all nationalities. Fast processing with minimal documentation.',
             details: [
@@ -80,8 +84,13 @@ const ServiceSection = () => {
                             >
                                 <div>
                                     <div className="flex justify-center mb-4">
-                                        <service.icon className="w-12 h-12 text-[#0E4DAA]" />
+                                     
+                                            <img src={service.icon} alt={service.title} className="w-12 h-12" />
+                                      
+                                            {/* <service.icon className="w-12 h-12 text-[#0E4DAA]" /> */}
+                                     
                                     </div>
+
                                     <h3 className="mb-2 text-xl font-semibold">{service.title}</h3>
                                     <p className="mb-4 text-gray-300">{service.description}</p>
                                     {/* <ul className="mb-4 text-sm text-gray-400">
@@ -121,7 +130,7 @@ const ServiceSection = () => {
                             >
                                 <div>
                                     <div className="flex justify-center mb-4">
-                                        <service.icon className="w-8 h-8 text-[#0E4DAA]" />
+                                        {/* <service.icon className="w-8 h-8 text-[#0E4DAA]" /> */}
                                     </div>
                                     <h3 className="mb-2 text-xl font-semibold text-center">{service.title}</h3>
                                     <p className="mb-4 text-center text-gray-300">{service.description}</p>

@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import bg1 from "../../assets/bg1.png";
-import person from "../../assets/photo.png";
+import person from "../../assets/map.png";
 import { Phone, MapPin, Mail, Clock } from 'lucide-react';
+import { db } from "../../firebase";
+import { collection, addDoc } from "firebase/firestore";
+import { enqueueSnackbar } from 'notistack';
 
 const ContactForm = () => {
-    const [formData, setState] = useState({
+    const [formData, setFormData] = useState({
         name: '',
         email: '',
         subject: '',
@@ -13,16 +16,33 @@ const ContactForm = () => {
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setState(prevState => ({
+        setFormData(prevState => ({
             ...prevState,
             [name]: value
         }));
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log('Form submitted:', formData);
+        try {
+            await addDoc(collection(db, 'contacts'), {
+                ...formData,
+                isRead: false  // Defaulting isRead to false
+            });
+            enqueueSnackbar("Message sent successfully!", {
+                variant: "success",
+                anchorOrigin: { vertical: "top", horizontal: "right" },
+            });
+            setFormData({ name: '', email: '', subject: '', message: '' });
+        } catch (error) {
+            console.error("Error submitting form:", error);
+            enqueueSnackbar("Failed to send message. Please try again.", {
+                variant: "error",
+                anchorOrigin: { vertical: "top", horizontal: "right" },
+            });
+        }
     };
+
 
     return (
         <div className="py-20 bg-black lg:py-40" style={{
@@ -31,54 +51,18 @@ const ContactForm = () => {
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat"
         }}>
-
-            <div className='container grid lg:grid-cols-2 grid-cols-1` mx-auto gap-8 px-10' >
+            <div className='container grid grid-cols-1 gap-8 px-10 mx-auto lg:grid-cols-2'>
                 <div className="flex flex-col gap-3 md:gap-6">
                     <div className="relative box-gradient transition-all duration-300 ease-in-out rounded-b-[30px] shadow-lg">
                         <div className="flex justify-center">
-                            <img src={person} alt="" className="z-10  w-[250px] h-[250px] sm:h-[330px]" />
+                            <img src={person} alt="Person" className="z-10 " />
                         </div>
                     </div>
                     <div className="grid grid-cols-2 space-y-6 text-white">
-                        <div className="flex items-center">
-                            <div className="flex items-center justify-center w-10 h-10 mr-4 bg-purple-800 rounded-full">
-                                <Phone size={20} />
-                            </div>
-                            <div>
-                                <h3 className="font-bold">Phone Number</h3>
-                                <p>+971 50 859 0446</p>
-                            </div>
-                        </div>
-
-                        <div className="flex items-center">
-                            <div className="flex items-center justify-center w-10 h-10 mr-4 bg-purple-800 rounded-full">
-                                <MapPin size={20} />
-                            </div>
-                            <div>
-                                <h3 className="font-bold">Main Office</h3>
-                                <p>123th, RoundStreet, Pekanbaru.</p>
-                            </div>
-                        </div>
-
-                        <div className="flex items-center">
-                            <div className="flex items-center justify-center w-10 h-10 mr-4 bg-purple-800 rounded-full">
-                                <Mail size={20} />
-                            </div>
-                            <div>
-                                <h3 className="font-bold">Email</h3>
-                                <p>md@insourceprime.com</p>
-                            </div>
-                        </div>
-
-                        <div className="flex items-center">
-                            <div className="flex items-center justify-center w-10 h-10 mr-4 bg-purple-800 rounded-full">
-                                <Clock size={20} />
-                            </div>
-                            <div>
-                                <h3 className="font-bold">Work Hour</h3>
-                                <p>Mon - Sat : 09.00AM - 18:00PM</p>
-                            </div>
-                        </div>
+                        <ContactInfo icon={Phone} title="Phone Number" content="+971 50 859 0446" />
+                        <ContactInfo icon={MapPin} title="Main Office" content="123th, RoundStreet, Pekanbaru." />
+                        <ContactInfo icon={Mail} title="Email" content="md@insourceprime.com" />
+                        <ContactInfo icon={Clock} title="Work Hour" content="Mon - Sat : 09.00AM - 18:00PM" />
                     </div>
                 </div>
 
@@ -87,59 +71,13 @@ const ContactForm = () => {
                     <p className="mb-6 text-lg text-white">We’d love to hear from you. Fill out the form below, and we’ll get back to you as soon as possible.</p>
 
                     <form onSubmit={handleSubmit} className="space-y-4">
-                        <div>
-                            <input
-                                type="text"
-                                name="name"
-                                value={formData.name}
-                                onChange={handleChange}
-                                placeholder="Your Name"
-                                className="w-full p-3 text-black bg-white rounded-lg"
-                                required
-                            />
-                        </div>
+                        <InputField type="text" name="name" value={formData.name} onChange={handleChange} placeholder="Your Name" />
+                        <InputField type="email" name="email" value={formData.email} onChange={handleChange} placeholder="Your Email" />
+                        <InputField type="text" name="subject" value={formData.subject} onChange={handleChange} placeholder="Your Subject" />
+                        <TextareaField name="message" value={formData.message} onChange={handleChange} placeholder="Your Message" />
 
                         <div>
-                            <input
-                                type="email"
-                                name="email"
-                                value={formData.email}
-                                onChange={handleChange}
-                                placeholder="Your Email"
-                                className="w-full p-3 text-black bg-white rounded-lg"
-                                required
-                            />
-                        </div>
-
-                        <div>
-                            <input
-                                type="text"
-                                name="subject"
-                                value={formData.subject}
-                                onChange={handleChange}
-                                placeholder="Your Subject"
-                                className="w-full p-3 text-black bg-white rounded-lg"
-                                required
-                            />
-                        </div>
-
-                        <div>
-                            <textarea
-                                name="message"
-                                value={formData.message}
-                                onChange={handleChange}
-                                placeholder="Your Message"
-                                className="w-full p-3 text-black bg-white rounded-lg"
-                                rows="6"
-                                required
-                            ></textarea>
-                        </div>
-
-                        <div>
-                            <button
-                                type="submit"
-                                className="px-8 py-3 text-white transition-colors bg-black border-2 border-white rounded-full hover:bg-gray-900"
-                            >
+                            <button type="submit" className="px-8 py-3 text-white transition-colors bg-black border-2 border-white rounded-full hover:bg-gray-900">
                                 Submit
                             </button>
                         </div>
@@ -149,5 +87,41 @@ const ContactForm = () => {
         </div>
     );
 };
+
+const ContactInfo = ({ icon: Icon, title, content }) => (
+    <div className="flex items-center">
+        <div className="flex items-center justify-center w-10 h-10 mr-4 bg-[#0E4DAA] rounded-full">
+            <Icon size={20} />
+        </div>
+        <div>
+            <h3 className="font-bold">{title}</h3>
+            <p>{content}</p>
+        </div>
+    </div>
+);
+
+const InputField = ({ type, name, value, onChange, placeholder }) => (
+    <input
+        type={type}
+        name={name}
+        value={value}
+        onChange={onChange}
+        placeholder={placeholder}
+        className="w-full p-3 text-black bg-white rounded-lg"
+        required
+    />
+);
+
+const TextareaField = ({ name, value, onChange, placeholder }) => (
+    <textarea
+        name={name}
+        value={value}
+        onChange={onChange}
+        placeholder={placeholder}
+        className="w-full p-3 text-black bg-white rounded-lg"
+        rows="6"
+        required
+    ></textarea>
+);
 
 export default ContactForm;

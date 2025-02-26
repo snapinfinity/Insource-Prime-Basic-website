@@ -26,12 +26,12 @@ const TrustedPartner = () => {
 
                         <div className="grid grid-cols-2 gap-2 mt-4 md:gap-12">
                             <div className="sm:p-6 p-2 text-center text-white sm:rounded-[30px] rounded-[12px] service-gradient ">
-                                <h3 className="md:text-5xl text-[26px]  font-bold ">12K</h3>
-                                <p className="text-sm">Downloaded</p>
+                                <h3 className="md:text-5xl text-[26px]  font-bold ">500+</h3>
+                                <p className="text-sm">Trusted Advisors</p>
                             </div>
                             <div className="sm:p-6 p-2 text-center text-white sm:rounded-[30px] rounded-[12px]  service-gradient ">
-                                <h3 className="text-[26px] font-bold md:text-5xl ">20K</h3>
-                                <p className="text-sm">Happy Customer</p>
+                                <h3 className="text-[26px] font-bold md:text-5xl ">5K+</h3>
+                                <p className="text-sm"> Clients Empowered</p>
                             </div>
                         </div>
                     </div>

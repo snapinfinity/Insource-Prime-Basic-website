@@ -1,7 +1,6 @@
 import React from 'react';
 import { FileText, Clock, Banknote } from "lucide-react";
 import { motion } from "framer-motion";
-import bg1 from "../../assets/about.jpg";
 
 const WhyBanking = () => {
     const features = [
@@ -24,8 +23,8 @@ const WhyBanking = () => {
 
     return (
         <div 
-            className='relative py-10 bg-center bg-no-repeat bg-cover'  
-            style={{ backgroundImage: `url(${bg1})` }}>
+            className='relative py-10 bg-gradient-to-br from-blue-100 to-blue-50' // Added gradient background
+        >
             <div className="container px-10 py-10 mx-auto md:py-20">
                 <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                     <motion.div 
