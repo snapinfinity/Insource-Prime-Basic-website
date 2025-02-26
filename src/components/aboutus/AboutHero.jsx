@@ -10,7 +10,7 @@ const AboutHero = () => {
       }}
     >
       <div className="container px-4 mx-auto text-center">
-        <h1 className="text-[70px] font-bold  text-white">
+        <h1 className="xl:text-[70px]  text-[40px] font-bold  text-white">
           About Our Banking
         </h1>
         <p className="mt-2 text-sm text-white">

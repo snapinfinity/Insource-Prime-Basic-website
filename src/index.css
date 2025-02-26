@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+    --e-global-color-d95cb3e: #4705FF; /* Define your global colors */
+    --e-global-color-930d0bd: #F2295B00;
+}
+
+
+.service-gradient {
+    background-color: transparent;
+    background-image: linear-gradient(180deg, var(--e-global-color-d95cb3e) 0%, var(--e-global-color-930d0bd) 100%);
+}
+
+.box-gradient {
+    background-color: transparent;
+    background-image: linear-gradient(180deg, var(--e-global-color-930d0bd) 0%, var(--e-global-color-d95cb3e) 100%);
+}

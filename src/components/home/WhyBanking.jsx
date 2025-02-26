@@ -34,7 +34,7 @@ const WhyBanking = () => {
                         transition={{ duration: 0.8 }}
                         className="xl:text-[50px] text-[40px] flex justify-center items-center font-bold text-[#061D41]"
                     >
-                        Why a Banking Consultancy?
+                        Why Insource 360 Banking Consultancy?
                     </motion.div>
                     <motion.div 
                         initial={{ opacity: 0, x: 50 }}
@@ -42,7 +42,7 @@ const WhyBanking = () => {
                         transition={{ duration: 0.8 }}
                         className="text-lg leading-relaxed text-slate-600"
                     >
-                        The UAE banking system is known for its robust financial regulations, diverse banking options, and strict compliance requirements. While this ensures a secure financial environment, it can also make opening and managing a bank account complex, especially for businesses, expatriates, and international investors. A banking consultancy acts as a bridge, simplifying the process and ensuring a smooth experience.
+                        The UAE banking system is known for its robust financial regulations, diverse banking options, and strict compliance requirements. While this ensures a secure financial environment, it can also make opening and managing a bank account complex, especially for businesses, expatriates, and international investors. Insource 360 banking consultancy acts as a bridge, simplifying the process and ensuring a smooth experience.
                     </motion.div>
                 </div>
                 <div className="mt-20">

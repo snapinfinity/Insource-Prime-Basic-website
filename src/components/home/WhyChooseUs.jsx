@@ -59,7 +59,7 @@ const WhyChooseUs = () => {
             <div className="container relative z-10 px-6 mx-auto">
                 <div className="mb-16 text-center">
                     <h2 className="relative mb-6 text-4xl font-bold md:text-5xl">
-                        Why Choose Us?
+                    The Insourse 360 Advantage
                        
                     </h2>
                     <p className="max-w-3xl mx-auto mt-8 text-gray-300">
