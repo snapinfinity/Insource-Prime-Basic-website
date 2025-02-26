@@ -26,18 +26,18 @@ const TrustedPartner = () => {
 
                         <div className="grid grid-cols-2 gap-2 mt-4 md:gap-12">
                             <div className="sm:p-6 p-2 text-center text-white sm:rounded-[30px] rounded-[12px] service-gradient ">
-                                <h3 className="md:text-5xl text-[26px]  font-bold ">127K</h3>
+                                <h3 className="md:text-5xl text-[26px]  font-bold ">12K</h3>
                                 <p className="text-sm">Downloaded</p>
                             </div>
                             <div className="sm:p-6 p-2 text-center text-white sm:rounded-[30px] rounded-[12px]  service-gradient ">
-                                <h3 className="text-[26px] font-bold md:text-5xl ">119K</h3>
+                                <h3 className="text-[26px] font-bold md:text-5xl ">20K</h3>
                                 <p className="text-sm">Happy Customer</p>
                             </div>
                         </div>
                     </div>
                     <div className="text-white ">
                         <h2 className="md:text-[40px] text-[28px] font-bold leading-tight">
-                            More than 100k People Have Proven Our Service
+                            More than 20k People Have Proven Our Service
                         </h2>
                         <p className="mt-4 text-lg">
                             Join a growing community of satisfied customers who have transformed their experiences with our trusted services. We prioritize quality, reliability, and customer satisfaction in everything we do.

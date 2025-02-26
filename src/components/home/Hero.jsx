@@ -20,7 +20,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <div className="relative flex items-center justify-center min-h-screen overflow-hidden bg-[#0a0f36]">
+    <div className="relative flex items-center justify-center min-h-screen overflow-hidden bg-[#0a0f36]" >
       <div className="absolute inset-0 w-full h-full">
         <AnimatePresence mode="wait">
           <motion.img

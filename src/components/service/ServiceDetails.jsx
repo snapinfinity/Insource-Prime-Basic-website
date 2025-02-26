@@ -1,10 +1,12 @@
 import React from "react";
 import { Check } from "lucide-react";
 import bg1 from "../../assets/slider-1.jpg";
+import { useNavigate } from "react-router-dom";
 
 const ServiceDetails = ({ services = [] }) => {
+    const navigate = useNavigate();
     return (
-        <div className="py-16 bg-gray-900"
+        <div className="py-16 bg-gray-900" 
             style={{
                 backgroundImage: `linear-gradient(135deg, rgba(6, 29, 65, 0.9), rgba(6, 29, 65, 0.6)),url(${bg1})`,
                 backgroundSize: "cover",
@@ -39,7 +41,7 @@ const ServiceDetails = ({ services = [] }) => {
                                     ))}
                                 </ul>
                             )}
-                            {service.callToAction && <p className="mb-4 text-gray-400">{service.callToAction}</p>}
+                            {service.callToAction && <p className="mb-4 text-gray-400 cursor-pointer"  onClick={() => navigate('/contact-us')}>{service.callToAction}</p>}
                         </div>
                     ))
                 ) : (

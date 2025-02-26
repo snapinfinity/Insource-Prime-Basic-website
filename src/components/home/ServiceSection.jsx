@@ -93,7 +93,16 @@ const ServiceSection = () => {
                                     </ul> */}
                                 </div>
                                 <div className="flex justify-center">
-                                    <button className="px-4 py-2 mt-4 font-semibold text-white bg-[#0E4DAA] rounded-[20px] hover:bg-[#0E4DAA] w-[200px]"   onClick={() => navigate("/services")}>
+                                    <button className="px-4 py-2 mt-4 font-semibold text-white bg-[#0E4DAA] rounded-[20px] hover:bg-[#0E4DAA] w-[200px]" onClick={() => {
+                                        navigate("/services");
+                                        setTimeout(() => {
+                                            const heroSection = document.getElementById("servicecard");
+                                            if (heroSection) {
+                                                heroSection.scrollIntoView({ behavior: "smooth" });
+                                            }
+                                        }, 500);
+                                    }}
+                                    >
                                         Read More
                                     </button>
                                 </div>
@@ -102,7 +111,7 @@ const ServiceSection = () => {
                     </div>
                 </motion.div>
 
-              
+
                 <div className="md:hidden">
                     <div className="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-4">
                         {services.map((service, index) => (
@@ -125,7 +134,7 @@ const ServiceSection = () => {
                                     </ul> */}
                                 </div>
                                 <div className="flex justify-center">
-                                    <button className="px-4 py-2 mt-4 font-semibold text-white bg-[#0E4DAA] rounded-[20px] hover:bg-[#0E4DAA] w-[200px]"  onClick={() => navigate("/services")}>
+                                    <button className="px-4 py-2 mt-4 font-semibold text-white bg-[#0E4DAA] rounded-[20px] hover:bg-[#0E4DAA] w-[200px]" onClick={() => navigate("/services")}>
                                         Read More
                                     </button>
                                 </div>
