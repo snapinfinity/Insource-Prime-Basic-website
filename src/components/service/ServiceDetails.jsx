@@ -34,7 +34,7 @@ const ServiceDetails = ({ services = [] }) => {
                                 <ul className="mb-4 space-y-2">
                                     {service.benefits.map((benefit, benefitIndex) => (
                                         <li key={benefitIndex} className="flex items-center text-gray-300">
-                                            <Check className="w-5 h-5 mr-2 text-black bg-[#962EFF] rounded-full" /> {benefit}
+                                            <Check className="w-5 h-5 mr-2 text-black bg-white rounded-full" /> {benefit}
                                         </li>
                                     ))}
                                 </ul>

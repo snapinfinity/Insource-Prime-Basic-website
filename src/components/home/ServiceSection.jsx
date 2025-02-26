@@ -3,7 +3,9 @@ import { Search, BarChart3, Wallet, Users } from 'lucide-react';
 import { fadeIn, fadeOut } from '../../shared/animation/Motion';
 import { motion } from "framer-motion";
 import bg from "../../assets/bg_overlay.png"
+import { useNavigate } from 'react-router-dom';
 const ServiceSection = () => {
+    const navigate = useNavigate();
     const services = [
         {
             icon: Wallet,
@@ -49,20 +51,18 @@ const ServiceSection = () => {
     ];
 
     return (
-        <div className="py-20 text-white bg-[#10153D] bg-opacity-100"  style={{
+        <div className="py-20 text-white bg-[#10153D] bg-opacity-100" style={{
             backgroundImage: `url(${bg})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
             position: "relative",
-          }}>
+        }}>
 
             <div className="container px-10 mx-auto text-left md:text-center">
                 <h2 className="pb-12 lg:text-[53px] text-[30px] font-semibold">
                     What we can help you with
                 </h2>
-
-                {/* Animated section for desktop (md and above) */}
                 <motion.div
                     variants={fadeIn("right", 0.1)}
                     initial="hidden"
@@ -80,20 +80,20 @@ const ServiceSection = () => {
                             >
                                 <div>
                                     <div className="flex justify-center mb-4">
-                                        <service.icon className="w-8 h-8 text-[#0E4DAA]" />
+                                        <service.icon className="w-12 h-12 text-[#0E4DAA]" />
                                     </div>
                                     <h3 className="mb-2 text-xl font-semibold">{service.title}</h3>
                                     <p className="mb-4 text-gray-300">{service.description}</p>
-                                    <ul className="mb-4 text-sm text-gray-400">
+                                    {/* <ul className="mb-4 text-sm text-gray-400">
                                         {service.details.map((detail, detailIndex) => (
                                             <li key={detailIndex} className="list-disc list-inside">
                                                 {detail}
                                             </li>
                                         ))}
-                                    </ul>
+                                    </ul> */}
                                 </div>
                                 <div className="flex justify-center">
-                                    <button className="px-4 py-2 mt-4 font-semibold text-white bg-[#0E4DAA] rounded-[20px] hover:bg-[#0E4DAA] w-[200px]">
+                                    <button className="px-4 py-2 mt-4 font-semibold text-white bg-[#0E4DAA] rounded-[20px] hover:bg-[#0E4DAA] w-[200px]"   onClick={() => navigate("/services")}>
                                         Read More
                                     </button>
                                 </div>
@@ -102,7 +102,7 @@ const ServiceSection = () => {
                     </div>
                 </motion.div>
 
-                {/* Non-animated section for mobile */}
+              
                 <div className="md:hidden">
                     <div className="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-4">
                         {services.map((service, index) => (
@@ -114,18 +114,18 @@ const ServiceSection = () => {
                                     <div className="flex justify-center mb-4">
                                         <service.icon className="w-8 h-8 text-[#0E4DAA]" />
                                     </div>
-                                    <h3 className="mb-2 text-xl font-semibold">{service.title}</h3>
-                                    <p className="mb-4 text-gray-300">{service.description}</p>
-                                    <ul className="mb-4 text-sm text-gray-400">
+                                    <h3 className="mb-2 text-xl font-semibold text-center">{service.title}</h3>
+                                    <p className="mb-4 text-center text-gray-300">{service.description}</p>
+                                    {/* <ul className="mb-4 text-sm text-left text-gray-400">
                                         {service.details.map((detail, detailIndex) => (
                                             <li key={detailIndex} className="list-disc list-inside">
                                                 {detail}
                                             </li>
                                         ))}
-                                    </ul>
+                                    </ul> */}
                                 </div>
                                 <div className="flex justify-center">
-                                    <button className="px-4 py-2 mt-4 font-semibold text-white bg-[#0E4DAA] rounded-[20px] hover:bg-[#0E4DAA] w-[200px]">
+                                    <button className="px-4 py-2 mt-4 font-semibold text-white bg-[#0E4DAA] rounded-[20px] hover:bg-[#0E4DAA] w-[200px]"  onClick={() => navigate("/services")}>
                                         Read More
                                     </button>
                                 </div>
