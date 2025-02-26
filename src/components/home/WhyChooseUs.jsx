@@ -3,7 +3,7 @@ import { KeyRound, Banknote, CheckCircle, Award } from 'lucide-react';
 import img from "../../assets/test2.gif"
 import img1 from "../../assets/gif.gif"
 import img2 from "../../assets/new1.gif"
-import img3 from "../../assets/new3.gif"
+import img3 from "../../assets/gif12.gif"
 import img4 from "../../assets/new2.gif"
 import bg from "../../assets/slide-4.jpg"
 
