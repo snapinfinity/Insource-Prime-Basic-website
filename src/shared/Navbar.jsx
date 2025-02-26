@@ -2,10 +2,10 @@ import React, { useState, useRef, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import img from "../assets/insourcewhite-cropped.svg";
 
-const NavbarLink = ({ to, label, isActive }) => {
+const NavbarLink = ({ href, label, isActive }) => {
   return (
     <Link
-      to={to}
+      to={href}
       className={`inline-flex items-center px-1 pt-1 xl:text-[18px] text-[15px] font-[300] cursor-pointer relative ${
         isActive
           ? "text-white hover:text-white after:absolute after:bottom-[-8px] after:left-0 after:w-full after:h-[2px] after:bg-white"
@@ -52,10 +52,10 @@ const Navbar = () => {
   };
 
   const links = [
-    { to: "/", label: "Home" },
-    { to: "/about-us", label: "About Us" },
-    { to: "/services", label: "Services" },
-    { to: "/contact-us", label: "Contact Us" },
+    { href: "/", label: "Home" },
+    { href: "/about-us", label: "About Us" },
+    { href: "/services", label: "Services" },
+    { href: "/contact-us", label: "Contact Us" },
   ];
 
   return (
@@ -75,7 +75,7 @@ const Navbar = () => {
           <div className="flex items-center -mr-2 lg:hidden">
             <button
               onClick={toggleMenu}
-              className="inline-flex items-center justify-center p-2 text-white rounded-md relative z-[2] mobile-menu-button"
+              className="relative z-30 inline-flex items-center justify-center p-2 text-white rounded-md mobile-menu-button"
             >
               <svg
                 className="w-8 h-8 text-white"
@@ -98,15 +98,38 @@ const Navbar = () => {
           {/* Desktop Navigation */}
           <div className="items-center hidden gap-1 lg:flex xl:gap-3">
             {links.map((link) => (
-              <NavbarLink
-                key={link.to}
-                to={link.to}
-                label={link.label}
-                isActive={location.pathname === link.to}
-              />
+              <NavbarLink key={link.href} href={link.href} label={link.label} isActive={location.pathname === link.href} />
             ))}
           </div>
         </div>
+
+        {/* Mobile Menu - Always in DOM but transformed based on state */}
+        <div
+          ref={mobileMenuRef}
+          className={`fixed inset-y-0 right-0 bg-[#10153D] opacity-90 w-[200px] z-20 transform rounded-l-2xl shadow-2xl flex flex-col items-start px-4 py-6 space-y-4 lg:hidden transition-transform duration-300 ease-in-out ${
+            isOpen ? "translate-x-0" : "translate-x-full"
+          }`}
+        >
+          <div className="pt-12">
+            {links.map((link) => (
+              <div className="py-2" key={link.href}>
+                <NavbarLink
+                  href={link.href}
+                  label={link.label}
+                  isActive={location.pathname === link.href}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Overlay when menu is open */}
+        <div 
+          className={`fixed inset-0 bg-black lg:hidden transition-opacity duration-300 ease-in-out z-10 ${
+            isOpen ? "opacity-50" : "opacity-0 pointer-events-none"
+          }`}
+          onClick={() => setIsOpen(false)}
+        ></div>
       </div>
     </div>
   );
