@@ -60,7 +60,7 @@ const ContactForm = () => {
                     </div>
                     <div className="grid grid-cols-2 space-y-6 text-white">
                         <ContactInfo icon={Phone} title="Phone Number" content="+971 50 859 0446" />
-                        <ContactInfo icon={MapPin} title="Main Office" content="123th, RoundStreet, Pekanbaru." />
+                        <ContactInfo icon={MapPin} title="Main Office" content="Business Bay-Dubai - United Arab Emirates" />
                         <ContactInfo icon={Mail} title="Email" content="md@insourceprime.com" />
                         <ContactInfo icon={Clock} title="Work Hour" content="Mon - Sat : 09.00AM - 18:00PM" />
                     </div>

@@ -3,7 +3,7 @@ import img from "../assets/insourcewhite-cropped.svg";
 import { Facebook, Twitter, Instagram, Linkedin, MapPin, Phone, Mail, Globe } from "lucide-react";
 
 const contactInfo = [
-  { icon: <MapPin size={20} className="text-gray-300" />, text: "[Your Office Address]" },
+  { icon: <MapPin size={24} className="text-gray-300" />, text: "Office #3806A, Single Business Tower - Business Bay-Dubai - United Arab Emirates" },
   { icon: <Phone size={20} className="text-gray-300" />, text: "+971 50 859 0446" },
   { icon: <Mail size={20} className="text-gray-300" />, text: "md@insourceprime.com", link: "mailto:md@insourceprime.com" },
   { icon: <Globe size={20} className="text-gray-300" />, text: "www.insourceprime.com", link: "https://www.insourceprime.com" }
@@ -124,7 +124,7 @@ const Footer = () => {
 
 
           <div className="flex flex-col items-center justify-center">
-            {/* <h3 className="text-2xl font-bold">Follow Us</h3> */}
+         
             <div className="flex gap-8 pt-4">
               {socialLinks.map((social, index) => (
                 <a key={index} href={social.link} className="text-2xl text-gray-300 hover:text-white">
