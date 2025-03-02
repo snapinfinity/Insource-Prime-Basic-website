@@ -3,9 +3,11 @@ import Home from './pages/Home'
 import Navbar from './shared/Navbar'
 import Footer from './shared/Footer'
 import Aboutus from './pages/Aboutus'
-import Services from './pages/Services'
 import Contact from './pages/Contact'
 import CorporateBanking from './pages/CorporateBanking'
+import OffshoreBanking from './pages/OffshoreBanking'
+import PersonalBanking from './pages/PersonalBanking'
+import PrivateBanking from './pages/PrivateBanking'
 
 function App() {
   return (
@@ -17,6 +19,9 @@ function App() {
         {/* <Route path="/services" element={<Services/>} /> */}
         <Route path="/contact-us" element={<Contact/>} />
         <Route path="/services/corporate-banking" element={<CorporateBanking/>} />
+        <Route path="/services/offshore-banking" element={<OffshoreBanking/>} />
+        <Route path="/services/private-banking" element={<PrivateBanking/>} />
+        <Route path="/services/personal-banking" element={<PersonalBanking/>} />
       </Routes>
       <Footer/>
     </>

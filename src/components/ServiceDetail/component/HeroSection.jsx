@@ -6,6 +6,8 @@ import { fadeIn, staggerContainer } from '../../../shared/animation/Motion';
 
 
 const HeroSection = ({ data }) => {
+  console.log(data,"p");
+  
   const { title, subtitle, buttonText, features } = data;
 
   return (
@@ -36,7 +38,7 @@ const HeroSection = ({ data }) => {
           </motion.div>
           <motion.div variants={fadeIn("right", "tween", 0.5, 1)} className="hidden md:block"> 
             <div className="p-8 bg-white border border-white bg-opacity-10 rounded-xl backdrop-blur-sm border-opacity-20">
-              {features.map((feature, index) => (
+              {features?.map((feature, index) => (
                 <motion.div
                   variants={fadeIn("up", "tween", 0.8 + index * 0.2, 0.8)} 
                   key={index}
