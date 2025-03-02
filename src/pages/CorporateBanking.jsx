@@ -1,4 +1,4 @@
-import { Building, ShieldCheck, Users, DollarSign, CreditCard } from "lucide-react";
+import { Building, ShieldCheck, Users, DollarSign, CreditCard, Globe } from "lucide-react";
 
 import IntroSection from "../components/ServiceDetail/component/IntroSection";
 import WhyChooseUsSection from "../components/ServiceDetail/component/WhyChooseUsSection";
@@ -10,7 +10,7 @@ import HeroSection from "../components/ServiceDetail/component/HeroSection";
 const heroData = {
   title: "Effortless Corporate Banking in UAE",
   subtitle: "Hassle-Free Setup for Freezone & Mainland Businesses",
-  buttonText: "Get Started",
+  buttonText: "Get Started Today!",
   features: [
     {
       icon: Building,
@@ -69,8 +69,15 @@ const whyChooseUsData = {
       description:
         "We facilitate trade finance solutions, including credit lines to support your trading operations and business growth.",
     },
+    {
+      icon: Globe,
+      title: "International Banking Access",
+      description:
+        "Expand your financial reach with our support in opening offshore and international corporate bank accounts.",
+    },
   ],
 };
+
 
 const processData = {
   title: "Our Process",

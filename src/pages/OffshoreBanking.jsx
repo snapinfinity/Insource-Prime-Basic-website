@@ -5,7 +5,7 @@ import WhyChooseUsSection from '../components/ServiceDetail/component/WhyChooseU
 import ProcessSection from '../components/ServiceDetail/component/ProcessSection';
 import BenefitsSection from '../components/ServiceDetail/component/BenifitsSection';
 import ContactForm from '../components/contact-us/ContactForm';
-import { CreditCard, DollarSign, Globe, Shield, ShieldCheck, Users, Lock  } from 'lucide-react';
+import { CreditCard, DollarSign, Globe, Shield, ShieldCheck, Users, Lock, Briefcase, Banknote  } from 'lucide-react';
 
 const heroData = {
     title: "Secure Offshore Bank Account Opening",
@@ -63,8 +63,21 @@ const heroData = {
         description:
           "Seamlessly manage international trade and investment transactions.",
       },
+      {
+        icon: Banknote,
+        title: "Exclusive Banking Services",
+        description:
+          "Gain access to premier banking services, including higher interest rates and premium financial products.",
+      },
+      {
+        icon: Briefcase,
+        title: "Business Expansion Opportunities",
+        description:
+          "Offshore banking enables companies to expand globally by facilitating smoother international operations and financial planning.",
+      },
     ],
   };
+  
 
   // const servicesData = {
   //   title: "Our Offshore Banking Solutions",

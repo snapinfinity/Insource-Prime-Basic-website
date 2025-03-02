@@ -5,13 +5,13 @@ import WhyChooseUsSection from '../components/ServiceDetail/component/WhyChooseU
 import ProcessSection from '../components/ServiceDetail/component/ProcessSection';
 import BenefitsSection from '../components/ServiceDetail/component/BenifitsSection';
 import ContactForm from '../components/contact-us/ContactForm';
-import { ChevronsUp, Globe, Key, Shield, ShieldCheck, Users, Wallet } from 'lucide-react';
+import { ChevronsUp, CreditCard, DollarSign, Globe, Key, Shield, ShieldCheck, Users, Wallet } from 'lucide-react';
 
 const PersonalBanking = () => {
     const heroData = {
         title: "Hassle-Free Personal Bank Account Opening",
         subtitle: "For All Nationalities – Fast Processing & Full Compliance",
-        buttonText: "Contact Us Now!",
+        buttonText: "Get Started Today!",
         features: [
           {
             icon: Wallet,
@@ -60,8 +60,19 @@ const PersonalBanking = () => {
             title: "Compliance & Security",
             description: "Full compliance with UAE regulations and secure banking solutions.",
           },
+          {
+            icon: DollarSign,
+            title: "Multi-Currency Account Options",
+            description: "Easily manage funds in different currencies with competitive exchange rates.",
+          },
+          {
+            icon: CreditCard,
+            title: "Exclusive Banking Benefits",
+            description: "Enjoy personalized banking services, higher transaction limits, and premium financial products.",
+          },
         ],
       };
+      
     
       const processData = {
         title: "Our Process",

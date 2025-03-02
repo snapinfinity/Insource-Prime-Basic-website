@@ -71,9 +71,10 @@ const Footer = () => {
                 <span className="text-white">{contactInfo[0].text}</span>
               </div>
               <div className="flex items-center gap-3 whitespace-nowrap">
-                <span>{contactInfo[1].icon}</span>
-                <span className="text-white">{contactInfo[1].text}</span>
-              </div>
+  <span>{contactInfo[1].icon}</span>
+  <span className="text-white break-keep">{contactInfo[1].text}</span>
+</div>
+
               <div className="flex items-center gap-3 whitespace-nowrap">
                 <span>{contactInfo[2].icon}</span>
                 {contactInfo[2].link ? (
@@ -145,10 +146,11 @@ const Footer = () => {
                   <span className="text-white break-words">{contactInfo[0].text}</span>
                 </div>
 
-                <div className="flex items-center gap-2 whitespace-nowrap">
-                  <span>{contactInfo[1].icon}</span>
-                  <span className="text-white">{contactInfo[1].text}</span>
-                </div>
+                <div className="flex items-center max-w-full gap-3 truncate whitespace-nowrap">
+  <span>{contactInfo[1].icon}</span>
+  <span className="text-white">{contactInfo[1].text}</span>
+</div>
+
 
                 <div className="flex items-center gap-2">
                   <span>{contactInfo[2].icon}</span>

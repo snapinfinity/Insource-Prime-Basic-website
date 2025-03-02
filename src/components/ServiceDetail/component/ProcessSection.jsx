@@ -13,7 +13,7 @@ const ProcessSection = ({ data }) => {
       initial="hidden"
       whileInView="show"
       viewport={{ once: false, amount: 0.2 }}
-      className="px-6 py-16 bg-gray-50"
+      className="py-16  bg-gray-50"
     >
       <div className="container px-10 mx-auto">
         <motion.div className="flex flex-col items-center justify-center gap-10 md:flex-row">

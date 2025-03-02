@@ -5,13 +5,13 @@ import WhyChooseUsSection from '../components/ServiceDetail/component/WhyChooseU
 import ProcessSection from '../components/ServiceDetail/component/ProcessSection';
 import BenefitsSection from '../components/ServiceDetail/component/BenifitsSection';
 import ContactForm from '../components/contact-us/ContactForm';
-import { Briefcase, Building, ChevronsUp, Lock, Users } from 'lucide-react';
+import { Briefcase, Building, ChevronsUp, CreditCard, Globe, Lock, Users } from 'lucide-react';
 
 const PrivateBanking = () => {
     const heroData = {
         title: "Exclusive Private Banking Solutions",
         subtitle: "Personalized Wealth Management for High-Net-Worth Individuals",
-        buttonText: "Contact Us for Exclusive Private Banking Solutions!",
+        buttonText: "Get Started Today!",
         features: [
           {
             icon: Briefcase,
@@ -60,8 +60,19 @@ const PrivateBanking = () => {
             title: "Discreet & Secure Banking",
             description: "High-level financial privacy and security for your assets.",
           },
+          {
+            icon: Globe,
+            title: "Global Investment Opportunities",
+            description: "Access international markets and diverse investment portfolios with expert guidance.",
+          },
+          {
+            icon: CreditCard,
+            title: "Tailored Credit & Lending Solutions",
+            description: "Exclusive loan and credit facilities designed for high-net-worth individuals.",
+          },
         ],
       };
+      
     
       const servicesData = {
         title: "Our Private Banking Services",
