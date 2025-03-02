@@ -6,7 +6,7 @@ import logo2 from "../../assets/logo1234.png"
 import logo3 from "../../assets/logo12345.png"
 
 const TrustedPartner = () => {
-    const logos = [logo1, logo2, logo3,logo3];
+    const logos = [logo1, logo2, logo3, logo3];
     return (
         <div className="py-20 bg-gray-900" style={{
             backgroundImage: `linear-gradient(135deg, rgba(6, 29, 65, 0.9), rgba(6, 29, 65, 0.6)),url(${bg1})`,
@@ -55,9 +55,9 @@ const TrustedPartner = () => {
                         </ul>
 
                         <div className="flex flex-wrap gap-4 mt-6">
-                            {logos.map((logo, index) => (
+                            {/* {logos.map((logo, index) => (
                                 <img key={index} src={logo} alt={`logo-${index}`} className="object-contain w-20 h-20" />
-                            ))}
+                            ))} */}
                         </div>
 
                     </div>

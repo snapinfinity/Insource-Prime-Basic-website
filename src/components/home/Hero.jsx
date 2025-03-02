@@ -4,11 +4,13 @@ import { ArrowUpRight } from "lucide-react";
 import img1 from "../../assets/IMG.jpg";
 import img2 from "../../assets/slide-3.jpg";
 import img3 from "../../assets/slider-2.jpg";
+import { useNavigate } from "react-router-dom";
 // import img4 from "../../assets/slider5.jpg";
 
 const images = [img1, img2, img3];
 
 const Hero = () => {
+  const navigate = useNavigate();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   useEffect(() => {
@@ -76,7 +78,7 @@ const Hero = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.2, delay: 0.5 }}
           >
-            <button className="bg-[#2874EB] hover:bg-[#1d5fc7] text-white md:px-8 px-5 lg:py-4 py-3 rounded-full flex items-center gap-2 transition-all shadow-lg shadow-blue-500/20">
+            <button className="bg-[#2874EB] hover:bg-[#1d5fc7] text-white md:px-8 px-5 lg:py-4 py-3 rounded-full flex items-center gap-2 transition-all shadow-lg shadow-blue-500/20"       onClick={() => navigate('/contact-us')}>
               Contact Us
               <ArrowUpRight size={20} />
             </button>

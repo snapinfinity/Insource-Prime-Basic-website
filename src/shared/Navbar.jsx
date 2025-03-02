@@ -2,8 +2,10 @@ import React, { useState, useRef, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import img from "../assets/insourcewhite-cropped.svg";
 
-const NavbarLink = ({ href, label, isActive }) => {
+const NavbarLink = ({ href, label, isActive, onClick }) => {
   const handleClick = () => {
+    if (onClick) onClick();
+
     setTimeout(() => {
       const heroSection = document.getElementById("hero");
       if (heroSection) {
@@ -11,18 +13,17 @@ const NavbarLink = ({ href, label, isActive }) => {
       } else {
         window.scrollTo({ top: 0, behavior: "smooth" });
       }
-    }, 100); // Delay to allow navigation first
+    }, 100);
   };
 
   return (
     <Link
       to={href}
       onClick={handleClick}
-      className={`inline-flex items-center px-1 pt-1 xl:text-[18px] text-[15px] font-[300] cursor-pointer relative ${
-        isActive
+      className={`inline-flex items-center px-1 pt-1 xl:text-[18px] text-[15px] font-[300] cursor-pointer relative ${isActive
           ? "text-white hover:text-white after:absolute after:bottom-[-8px] after:left-0 after:w-full after:h-[2px] after:bg-white"
           : "text-white hover:text-gray-300"
-      }`}
+        }`}
     >
       {label}
     </Link>
@@ -34,6 +35,17 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
   const mobileMenuRef = useRef(null);
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [isOpen]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -63,6 +75,11 @@ const Navbar = () => {
     setIsOpen(!isOpen);
   };
 
+
+  const closeMenu = () => {
+    setIsOpen(false);
+  };
+
   const links = [
     { href: "/", label: "Home" },
     { href: "/about-us", label: "About Us" },
@@ -72,9 +89,8 @@ const Navbar = () => {
 
   return (
     <div
-      className={`sticky top-0 z-20 ${
-        isScrolled ? "bg-[#10153D] shadow-md" : "lg:shadow-none shadow-md bg-[#10153D]"
-      }`}
+      className={`sticky top-0 z-20 ${isScrolled ? "bg-[#10153D] shadow-md" : "lg:shadow-none shadow-md bg-[#10153D]"
+        }`}
     >
       <div className="container px-10 mx-auto">
         <div className="flex items-center justify-between py-3 lg:py-5">
@@ -88,6 +104,7 @@ const Navbar = () => {
             <button
               onClick={toggleMenu}
               className="relative z-30 inline-flex items-center justify-center p-2 text-white rounded-md mobile-menu-button"
+              aria-label={isOpen ? "Close menu" : "Open menu"}
             >
               <svg
                 className="w-8 h-8 text-white"
@@ -107,35 +124,39 @@ const Navbar = () => {
             </button>
           </div>
 
-          {/* Desktop Navigation */}
           <div className="items-center hidden gap-1 lg:flex xl:gap-3">
             {links.map((link) => (
-              <NavbarLink key={link.href} href={link.href} label={link.label} isActive={location.pathname === link.href} />
+              <NavbarLink
+                key={link.href}
+                href={link.href}
+                label={link.label}
+                isActive={location.pathname === link.href}
+              />
             ))}
           </div>
         </div>
 
-        {/* Mobile Menu */}
         <div
           ref={mobileMenuRef}
-          className={`fixed inset-y-0 right-0 bg-[#10153D] opacity-90 w-[200px] z-20 transform rounded-l-2xl shadow-2xl flex flex-col items-start px-4 py-6 space-y-4 lg:hidden transition-transform duration-300 ease-in-out ${
-            isOpen ? "translate-x-0" : "translate-x-full"
-          }`}
+          className={`fixed inset-y-0 right-0 bg-[#10153D] opacity-90 w-[200px] z-20 transform rounded-l-2xl shadow-2xl flex flex-col items-start px-4 py-6 space-y-4 lg:hidden transition-transform duration-300 ease-in-out ${isOpen ? "translate-x-0" : "translate-x-full"
+            }`}
         >
           <div className="pt-12">
             {links.map((link) => (
               <div className="py-2" key={link.href}>
-                <NavbarLink href={link.href} label={link.label} isActive={location.pathname === link.href} />
+                <NavbarLink
+                  href={link.href}
+                  label={link.label}
+                  isActive={location.pathname === link.href}
+                  onClick={closeMenu}
+                />
               </div>
             ))}
           </div>
         </div>
-
-        {/* Overlay when menu is open */}
-        <div 
-          className={`fixed inset-0 bg-black lg:hidden transition-opacity duration-300 ease-in-out z-10 ${
-            isOpen ? "opacity-50" : "opacity-0 pointer-events-none"
-          }`}
+        <div
+          className={`fixed inset-0 bg-black lg:hidden transition-opacity duration-300 ease-in-out z-10 ${isOpen ? "opacity-50" : "opacity-0 pointer-events-none"
+            }`}
           onClick={() => setIsOpen(false)}
         ></div>
       </div>

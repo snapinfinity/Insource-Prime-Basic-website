@@ -23,7 +23,7 @@ const WhyBanking = () => {
 
     return (
         <div 
-            className='relative py-10 bg-gradient-to-br from-blue-100 to-blue-50' // Added gradient background
+            className='relative py-10 bg-gradient-to-br from-blue-100 to-blue-50' 
         >
             <div className="container px-10 py-10 mx-auto md:py-20">
                 <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
