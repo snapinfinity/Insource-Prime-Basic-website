@@ -92,7 +92,7 @@ const ContactForm = () => {
       }}
     >
       <div className="container grid grid-cols-1 gap-8 px-10 mx-auto lg:grid-cols-2" >
-        <motion.div variants={fadeIn("left", "tween", 0.2, 0.8)}>
+        <motion.div className="order-2 lg:order-1" variants={fadeIn("left", "tween", 0.2, 0.8)}>
           <div className="relative box-gradient transition-all duration-300 ease-in-out rounded-b-[30px] shadow-lg">
             <div className="flex justify-center">
               <img src={person} alt="Map" className="z-10" />
@@ -118,7 +118,7 @@ const ContactForm = () => {
           </div>
         </motion.div>
 
-        <motion.div variants={fadeIn("right", "tween", 0.4, 0.8)}>
+        <motion.div className="order-1 lg:order-2" variants={fadeIn("right", "tween", 0.4, 0.8)}>
           <div className="p-6">
             <h2 className="mb-3 md:text-[42px] text-[30px] font-bold text-white">
               Get In Touch
