@@ -2,6 +2,7 @@ import React from 'react';
 import img from "../assets/insourcewhite-cropped.svg";
 import { Facebook, Twitter, Instagram, Linkedin, MapPin, Phone, Mail, Globe } from "lucide-react";
 
+
 const contactInfo = [
   {
     icon: <MapPin size={20} className="flex-shrink-0 text-white min-w-5" />,
@@ -9,7 +10,9 @@ const contactInfo = [
   },
   {
     icon: <Phone size={20} className="flex-shrink-0 text-white min-w-5" />,
-    text: "+971 50 859 0446"
+    text: "+971 50 859 0446",
+    phoneLink: "tel:+971508590446",
+    whatsappLink: "https://wa.me/971508590446"
   },
   {
     icon: <Mail size={20} className="flex-shrink-0 text-white min-w-5" />,
@@ -41,17 +44,18 @@ const Footer = () => {
   return (
     <footer className="py-16 text-white bg-[#00051B]">
       <div className="container px-10 mx-auto">
+        {/* Desktop Layout */}
         <div className="hidden grid-cols-1 gap-8 md:grid md:grid-cols-4">
-
+          {/* Company Description */}
           <div className="space-y-4">
             <img className="w-[150px] cursor-pointer" src={img} alt="Insource 360" />
             <p className="text-white">
               Open your bank account in the UAE effortlessly with a quick and hassle-free process.
               Enjoy expert guidance, minimal paperwork, and swift approvals.
             </p>
-
           </div>
 
+          {/* Quick Links */}
           <div className="space-y-4">
             <h3 className="text-xl font-semibold">Quick Links</h3>
             <ul className="space-y-2">
@@ -65,18 +69,39 @@ const Footer = () => {
             </ul>
           </div>
 
+          {/* Contact Information */}
           <div className="space-y-4">
             <h3 className="text-xl font-semibold">Contact Us</h3>
             <div className="space-y-4">
+              {/* Address */}
               <div className="flex items-start gap-3">
                 <span className="mt-1">{contactInfo[0].icon}</span>
                 <span className="text-white">{contactInfo[0].text}</span>
               </div>
+
+              {/* Phone with WhatsApp */}
               <div className="flex items-center gap-3 whitespace-nowrap">
                 <span>{contactInfo[1].icon}</span>
-                <span className="text-white break-keep">{contactInfo[1].text}</span>
+                <div className="flex items-center gap-2">
+                  <a 
+                    href={contactInfo[1].phoneLink} 
+                    className="text-white hover:text-gray-300"
+                  >
+                    {contactInfo[1].text}
+                  </a>
+                  <a 
+                    href={contactInfo[1].whatsappLink} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="text-green-500 hover:text-green-400"
+                    aria-label="WhatsApp"
+                  >
+                    {/* <WhatsappLogo size={20} /> */}
+                  </a>
+                </div>
               </div>
 
+              {/* Email */}
               <div className="flex items-center gap-3 whitespace-nowrap">
                 <span>{contactInfo[2].icon}</span>
                 {contactInfo[2].link ? (
@@ -88,6 +113,7 @@ const Footer = () => {
                 )}
               </div>
 
+              {/* Website */}
               <div className="flex items-center gap-3 whitespace-nowrap">
                 <span>{contactInfo[3].icon}</span>
                 {contactInfo[3].link ? (
@@ -101,6 +127,7 @@ const Footer = () => {
             </div>
           </div>
 
+          {/* Social Links */}
           <div className="space-y-4">
             <h3 className="text-xl font-semibold">Follow Us</h3>
             <div className="flex pt-2 space-x-4">
@@ -118,15 +145,20 @@ const Footer = () => {
           </div>
         </div>
 
+        {/* Mobile Layout */}
         <div className="flex flex-col gap-10 md:hidden">
+          {/* Company Description */}
           <div className="space-y-4">
             <img className="w-[150px] cursor-pointer" src={img} alt="Insource 360" />
             <p className="text-white">
-              Seamless Bank Account Opening in the UAE
+              Open your bank account in the UAE effortlessly with a quick and hassle-free process.
+              Enjoy expert guidance, minimal paperwork, and swift approvals.
             </p>
           </div>
 
+          {/* Links and Contact Grid */}
           <div className="grid grid-cols-2 gap-6">
+            {/* Quick Links */}
             <div className="space-y-4">
               <h3 className="text-xl font-semibold">Quick Links</h3>
               <ul className="space-y-2">
@@ -140,20 +172,39 @@ const Footer = () => {
               </ul>
             </div>
 
+            {/* Contact Information */}
             <div className="space-y-4">
               <h3 className="text-xl font-semibold">Contact Us</h3>
               <div className="space-y-4">
+                {/* Address */}
                 <div className="flex items-start gap-2">
                   <span className="mt-1">{contactInfo[0].icon}</span>
                   <span className="text-white break-words">{contactInfo[0].text}</span>
                 </div>
 
+                {/* Phone with WhatsApp */}
                 <div className="flex items-center max-w-full gap-3 truncate whitespace-nowrap">
                   <span>{contactInfo[1].icon}</span>
-                  <span className="text-white">{contactInfo[1].text}</span>
+                  <div className="flex items-center gap-2">
+                    <a 
+                      href={contactInfo[1].phoneLink} 
+                      className="text-white hover:text-gray-300"
+                    >
+                      {contactInfo[1].text}
+                    </a>
+                    <a 
+                      href={contactInfo[1].whatsappLink} 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="text-green-500 hover:text-green-400"
+                      aria-label="WhatsApp"
+                    >
+                      {/* <WhatsappLogo size={20} /> */}
+                    </a>
+                  </div>
                 </div>
 
-
+                {/* Email */}
                 <div className="flex items-center gap-2">
                   <span>{contactInfo[2].icon}</span>
                   {contactInfo[2].link ? (
@@ -169,6 +220,7 @@ const Footer = () => {
                   )}
                 </div>
 
+                {/* Website */}
                 <div className="flex items-center gap-2">
                   <span>{contactInfo[3].icon}</span>
                   {contactInfo[3].link ? (
@@ -176,7 +228,7 @@ const Footer = () => {
                       href={contactInfo[3].link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="overflow-hidden text-white hover:text-gray-300 whitespace-nowrap text-ellipsis "
+                      className="overflow-hidden text-white hover:text-gray-300 whitespace-nowrap text-ellipsis"
                       style={{ maxWidth: '100%' }}
                     >
                       {contactInfo[3].text}
@@ -189,6 +241,7 @@ const Footer = () => {
             </div>
           </div>
 
+          {/* Social Links */}
           <div className="flex flex-col items-center justify-center">
             <h3 className="text-xl font-semibold">Follow Us</h3>
             <div className="flex gap-6 pt-4">
@@ -206,7 +259,7 @@ const Footer = () => {
           </div>
         </div>
 
-
+        {/* Footer Bottom */}
         <div className="pt-8 mt-16 text-center border-t border-gray-700">
           <p className="text-gray-400">
             insource-360 banking consultancy
