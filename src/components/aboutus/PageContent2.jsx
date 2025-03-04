@@ -1,10 +1,12 @@
 import React, { useRef, useEffect } from 'react';
 import { ChevronRight, Briefcase, Globe, Award, Users } from 'lucide-react';
 import { motion, useInView, useAnimation } from 'framer-motion';
-import img from "../../assets/slider-1.jpg"; // Using the same background image
+import { useNavigate } from 'react-router-dom';
+import img from "../../assets/slider-1.jpg"; 
 
-const ServiceCard = ({ icon, title, description }) => {
+const ServiceCard = ({ icon, title, description, link }) => {
   const ref = useRef(null);
+  const navigate = useNavigate();
   const isInView = useInView(ref, { once: true });
   const animation = useAnimation();
 
@@ -13,6 +15,22 @@ const ServiceCard = ({ icon, title, description }) => {
       animation.start({ opacity: 1, y: 0, scale: 1, transition: { duration: 0.8, ease: "easeOut" } });
     }
   }, [isInView, animation]);
+
+  const handleNavigate = () => {
+    // Navigate to the specific service page
+    navigate(link);
+    
+    // Scroll to hero section after navigation
+    setTimeout(() => {
+      const heroSection = document.getElementById("hero");
+      if (heroSection) {
+        heroSection.scrollIntoView({ behavior: "smooth" });
+      } else {
+        // Fallback to top of the page if hero section is not found
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    }, 100);
+  };
 
   return (
     <motion.div
@@ -26,9 +44,12 @@ const ServiceCard = ({ icon, title, description }) => {
       <h3 className="text-xl font-bold text-[#061D41] mb-2">{title}</h3>
       <p className="text-gray-700">{description}</p>
       <div className="mt-4">
-        <a href="#" className="flex items-center font-medium text-blue-600 hover:underline">
+        <button 
+          onClick={handleNavigate} 
+          className="flex items-center font-medium text-blue-600 hover:underline"
+        >
           Learn more <ChevronRight className="w-4 h-4 ml-1" />
-        </a>
+        </button>
       </div>
     </motion.div>
   );
@@ -84,21 +105,25 @@ const PageContent2 = () => {
             icon={<Briefcase className="w-12 h-12 text-blue-600" />} 
             title="Corporate Bank Account Opening"
             description="Freezone & Mainland business banking with expert compliance guidance."
+            link="/services/corporate-banking"
           />
           <ServiceCard
             icon={<Globe className="w-12 h-12 text-blue-600" />}
             title="Offshore Banking Solutions"
             description="Secure international banking for asset protection and business expansion."
+            link="/services/offshore-banking"
           />
           <ServiceCard
             icon={<Award className="w-12 h-12 text-blue-600" />}
             title="Private Banking & Wealth Management"
             description="Exclusive banking services for high-net-worth individuals."
+            link="/services/private-banking"
           />
           <ServiceCard
             icon={<Users className="w-12 h-12 text-blue-600" />}
             title="Personal Bank Accounts"
             description="Fast-track account opening with minimal documentation."
+            link="/services/personal-banking"
           />
         </div>
       </div>

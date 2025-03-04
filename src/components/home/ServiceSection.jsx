@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { motion } from "framer-motion";
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import bg from "../../assets/bg_overlay.png";
 import img from "../../assets/offshore Banking.svg";
 import img1 from "../../assets/Personal Banking.svg";
@@ -10,15 +10,7 @@ import { fadeIn, fadeOut } from '../../shared/animation/Motion';
 
 const ServiceSection = () => {
     const navigate = useNavigate();
- 
-    useEffect(() => {
-        if (location.hash === "#hero") {
-            const heroSection = document.getElementById("hero");
-            if (heroSection) {
-                heroSection.scrollIntoView({ behavior: "smooth" });
-            }
-        }
-    }, [location]);
+    const location = useLocation();
 
     const services = [
         {
@@ -49,13 +41,15 @@ const ServiceSection = () => {
 
     const handleNavigate = (link) => {
         navigate(link);
-        
         setTimeout(() => {
-            window.location.href = `${link}`;
-        }, 500);
+            const heroSection = document.getElementById("hero");
+            if (heroSection) {
+                heroSection.scrollIntoView({ behavior: "smooth" });
+            } else {
+                window.scrollTo({ top: 0, behavior: "smooth" });
+            }
+        }, 100); 
     };
-    
-    
 
     return (
         <div className="py-20 text-white bg-[#10153D]" style={{
@@ -69,7 +63,6 @@ const ServiceSection = () => {
                     What we can help you with
                 </h2>
 
-                {/* Desktop View with Animation */}
                 <motion.div
                     variants={fadeIn("right", 0.1)}
                     initial="hidden"

@@ -46,8 +46,10 @@ const Footer = () => {
           <div className="space-y-4">
             <img className="w-[150px] cursor-pointer" src={img} alt="Insource 360" />
             <p className="text-white">
-              Seamless Bank Account Opening in the UAE
+              Open your bank account in the UAE effortlessly with a quick and hassle-free process.
+              Enjoy expert guidance, minimal paperwork, and swift approvals.
             </p>
+
           </div>
 
           <div className="space-y-4">
@@ -71,9 +73,9 @@ const Footer = () => {
                 <span className="text-white">{contactInfo[0].text}</span>
               </div>
               <div className="flex items-center gap-3 whitespace-nowrap">
-  <span>{contactInfo[1].icon}</span>
-  <span className="text-white break-keep">{contactInfo[1].text}</span>
-</div>
+                <span>{contactInfo[1].icon}</span>
+                <span className="text-white break-keep">{contactInfo[1].text}</span>
+              </div>
 
               <div className="flex items-center gap-3 whitespace-nowrap">
                 <span>{contactInfo[2].icon}</span>
@@ -147,9 +149,9 @@ const Footer = () => {
                 </div>
 
                 <div className="flex items-center max-w-full gap-3 truncate whitespace-nowrap">
-  <span>{contactInfo[1].icon}</span>
-  <span className="text-white">{contactInfo[1].text}</span>
-</div>
+                  <span>{contactInfo[1].icon}</span>
+                  <span className="text-white">{contactInfo[1].text}</span>
+                </div>
 
 
                 <div className="flex items-center gap-2">
@@ -207,7 +209,7 @@ const Footer = () => {
 
         <div className="pt-8 mt-16 text-center border-t border-gray-700">
           <p className="text-gray-400">
-            insourceprime © 2025 All rights reserved
+            insource-360 banking consultancy
           </p>
         </div>
       </div>
