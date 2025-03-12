@@ -3,7 +3,7 @@ import bg1 from "../../assets/bg1.png";
 import person from "../../assets/map.png";
 import { Phone, MapPin, Mail, Clock } from "lucide-react";
 import { db } from "../../firebase";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { enqueueSnackbar } from "notistack";
 import { motion } from "framer-motion";
 import { fadeIn, staggerContainer } from "../../shared/animation/Motion";
@@ -66,7 +66,10 @@ const ContactForm = () => {
       await addDoc(collection(db, "contacts"), {
         ...formData,
         isRead: false,
+        createdAt: serverTimestamp(), // Add server timestamp
+        localTimestamp: new Date().toISOString(), // Backup client timestamp
       });
+      
       enqueueSnackbar("Message sent successfully!", {
         variant: "success",
         anchorOrigin: { vertical: "top", horizontal: "right" },
@@ -134,6 +137,7 @@ const ContactForm = () => {
                 <option value="Offshore Bank Account Opening">Offshore Bank Account Opening</option>
                 <option value="Private Banking">Private Banking</option>
                 <option value="Personal Banking">Personal Banking</option>
+                <option value="Compliance Advisory">Compliance Advisory</option>
                 <option value="Other">Other</option>
               </select>
               {errors.subject && <div className="mt-1 text-sm text-red-500">{errors.subject}</div>}

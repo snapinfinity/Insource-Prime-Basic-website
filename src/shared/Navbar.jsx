@@ -106,6 +106,8 @@ const Navbar = () => {
         { href: "/services/offshore-banking", label: "Offshore Bank Account Opening" },
         { href: "/services/private-banking", label: "Private Banking" },
         { href: "/services/personal-banking", label: "Personal Banking" },
+        { href: "/services/compliance-advisory", label: "Compliance Advisory" },
+        
       ],
     },
     { href: "/contact-us", label: "Contact Us" },

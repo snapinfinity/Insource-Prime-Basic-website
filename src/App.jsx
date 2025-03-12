@@ -8,6 +8,8 @@ import CorporateBanking from './pages/CorporateBanking'
 import OffshoreBanking from './pages/OffshoreBanking'
 import PersonalBanking from './pages/PersonalBanking'
 import PrivateBanking from './pages/PrivateBanking'
+import ComplianceAdvisory from './pages/ComplianceAdvisory'
+
 
 function App() {
   return (
@@ -22,6 +24,8 @@ function App() {
         <Route path="/services/offshore-banking" element={<OffshoreBanking/>} />
         <Route path="/services/private-banking" element={<PrivateBanking/>} />
         <Route path="/services/personal-banking" element={<PersonalBanking/>} />
+        <Route path="/services/compliance-advisory" element={<ComplianceAdvisory/>} />
+        
       </Routes>
       <Footer/>
     </>

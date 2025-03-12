@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from 'react';
-import { ChevronRight, Briefcase, Globe, Award, Users } from 'lucide-react';
+import { ChevronRight, Briefcase, Globe, Award, Users, Shield } from 'lucide-react';
 import { motion, useInView, useAnimation } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import img from "../../assets/slider-1.jpg"; 
@@ -17,16 +17,13 @@ const ServiceCard = ({ icon, title, description, link }) => {
   }, [isInView, animation]);
 
   const handleNavigate = () => {
-    // Navigate to the specific service page
     navigate(link);
-    
-    // Scroll to hero section after navigation
+ 
     setTimeout(() => {
       const heroSection = document.getElementById("hero");
       if (heroSection) {
         heroSection.scrollIntoView({ behavior: "smooth" });
       } else {
-        // Fallback to top of the page if hero section is not found
         window.scrollTo({ top: 0, behavior: "smooth" });
       }
     }, 100);
@@ -100,7 +97,7 @@ const PageContent2 = () => {
             At Insource 360, we offer <span className="font-bold text-blue-300">end-to-end banking solutions</span> tailored to your specific needs.
           </motion.p>
         </div>
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
           <ServiceCard
             icon={<Briefcase className="w-12 h-12 text-blue-600" />} 
             title="Corporate Bank Account Opening"
@@ -113,6 +110,14 @@ const PageContent2 = () => {
             description="Secure international banking for asset protection and business expansion."
             link="/services/offshore-banking"
           />
+          <ServiceCard
+            icon={<Shield className="w-12 h-12 text-blue-600" />}
+            title="Compliance Advisory"
+            description="End-to-end compliance solutions for financial institutions. Expert guidance on AML, KYC, and regulatory requirements."
+            link="/services/compliance-advisory"
+          />
+        </div>
+        <div className="grid grid-cols-1 gap-6 mt-6 md:grid-cols-2 md:max-w-4xl md:mx-auto">
           <ServiceCard
             icon={<Award className="w-12 h-12 text-blue-600" />}
             title="Private Banking & Wealth Management"
