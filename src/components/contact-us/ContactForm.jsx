@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import bg1 from "../../assets/bg1.png";
 import person from "../../assets/map.png";
 import { Phone, MapPin, Mail, Clock } from "lucide-react";
@@ -7,8 +7,10 @@ import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { enqueueSnackbar } from "notistack";
 import { motion } from "framer-motion";
 import { fadeIn, staggerContainer } from "../../shared/animation/Motion";
+import emailjs from '@emailjs/browser';
 
 const ContactForm = () => {
+  const form = useRef();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -18,6 +20,7 @@ const ContactForm = () => {
   });
 
   const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (Object.keys(errors).length > 0) {
@@ -62,19 +65,31 @@ const ContactForm = () => {
       return;
     }
 
+    setLoading(true);
+
     try {
       await addDoc(collection(db, "contacts"), {
         ...formData,
         isRead: false,
-        createdAt: serverTimestamp(), // Add server timestamp
-        localTimestamp: new Date().toISOString(), // Backup client timestamp
+        createdAt: serverTimestamp(),
+        localTimestamp: new Date().toISOString(),
       });
-      
+
+      const emailResult = await emailjs.sendForm(
+        'service_hm0f6j4', // Replace with your Email.js service ID
+        'template_ihw0cdq', // Replace with your Email.js template ID
+        form.current,
+        'CpCvp_tZnEKLfJ-FH' // Replace with your Email.js public key
+      );
+
+      console.log('Email sent successfully:', emailResult.text);
+
       enqueueSnackbar("Message sent successfully!", {
         variant: "success",
         anchorOrigin: { vertical: "top", horizontal: "right" },
         autoHideDuration: 2000,
       });
+
       setFormData({ name: "", email: "", mobile: "", subject: "", message: "" });
       setErrors({});
     } catch (error) {
@@ -84,6 +99,8 @@ const ContactForm = () => {
         anchorOrigin: { vertical: "top", horizontal: "right" },
         autoHideDuration: 2000,
       });
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -121,16 +138,16 @@ const ContactForm = () => {
             <h2 className="mb-3 md:text-[42px] text-[30px] font-bold text-white">Get In Touch</h2>
             <p className="mb-6 text-lg text-white">We'd love to hear from you. Fill out the form below, and we'll get back to you as soon as possible.</p>
 
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form ref={form} onSubmit={handleSubmit} className="space-y-4">
               <InputField type="text" name="name" value={formData.name} onChange={handleChange} placeholder="Your Name" />
               {errors.name && <div className="mt-1 text-sm text-red-500">{errors.name}</div>}
-              
+
               <InputField type="email" name="email" value={formData.email} onChange={handleChange} placeholder="Your Email" />
               {errors.email && <div className="mt-1 text-sm text-red-500">{errors.email}</div>}
-              
+
               <InputField type="text" name="mobile" value={formData.mobile} onChange={handleChange} placeholder="Your Mobile" />
               {errors.mobile && <div className="mt-1 text-sm text-red-500">{errors.mobile}</div>}
-              
+
               <select name="subject" value={formData.subject} onChange={handleChange} className="w-full p-3 text-black bg-white rounded-lg">
                 <option value="">Select Subject</option>
                 <option value="Corporate Bank Account Opening">Corporate Bank Account Opening</option>
@@ -141,10 +158,16 @@ const ContactForm = () => {
                 <option value="Other">Other</option>
               </select>
               {errors.subject && <div className="mt-1 text-sm text-red-500">{errors.subject}</div>}
-              
+
               <TextareaField name="message" value={formData.message} onChange={handleChange} placeholder="Your Message (Optional)" />
-              
-              <button type="submit" className="px-8 py-3 text-white transition-colors bg-black border-2 border-white rounded-full hover:bg-gray-900">Submit</button>
+
+              <button
+                type="submit"
+                className="px-8 py-3 text-white transition-colors bg-black border-2 border-white rounded-full hover:bg-gray-900 disabled:opacity-70"
+                disabled={loading}
+              >
+                {loading ? "Sending..." : "Submit"}
+              </button>
             </form>
           </div>
         </motion.div>
@@ -152,7 +175,6 @@ const ContactForm = () => {
     </motion.div>
   );
 };
-
 
 const ContactInfo = ({ icon: Icon, title, content }) => (
   <div className="flex items-center">
