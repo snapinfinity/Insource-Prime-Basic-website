@@ -60,6 +60,7 @@ const ContactForm = () => {
   };
 
   const handleSubmit = async (e) => {
+    debugger
     e.preventDefault();
     if (!validateForm()) {
       return;
@@ -72,14 +73,14 @@ const ContactForm = () => {
         ...formData,
         isRead: false,
         createdAt: serverTimestamp(),
-        localTimestamp: new Date().toISOString(),
+        // localTimestamp: new Date().toISOString(),
       });
 
       const emailResult = await emailjs.sendForm(
-        'service_hm0f6j4', // Replace with your Email.js service ID
-        'template_ihw0cdq', // Replace with your Email.js template ID
+        'service_e2o1m0k', // Replace with your Email.js service ID
+        'template_y7i86oz', // Replace with your Email.js template ID
         form.current,
-        'CpCvp_tZnEKLfJ-FH' // Replace with your Email.js public key
+        '_TW_0quAh3kZuz1yR' // Replace with your Email.js public key
       );
 
       console.log('Email sent successfully:', emailResult.text);
