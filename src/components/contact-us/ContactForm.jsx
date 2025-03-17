@@ -60,39 +60,43 @@ const ContactForm = () => {
   };
 
   const handleSubmit = async (e) => {
-    debugger
     e.preventDefault();
     if (!validateForm()) {
       return;
     }
-
+  
     setLoading(true);
-
+  
     try {
       await addDoc(collection(db, "contacts"), {
         ...formData,
         isRead: false,
         createdAt: serverTimestamp(),
-        // localTimestamp: new Date().toISOString(),
       });
-
-      const emailResult = await emailjs.sendForm(
-        'service_e2o1m0k', // Replace with your Email.js service ID
-        'template_y7i86oz', // Replace with your Email.js template ID
-        form.current,
-        '_TW_0quAh3kZuz1yR' // Replace with your Email.js public key
-      );
-
-      console.log('Email sent successfully:', emailResult.text);
-
       enqueueSnackbar("Message sent successfully!", {
         variant: "success",
         anchorOrigin: { vertical: "top", horizontal: "right" },
         autoHideDuration: 2000,
       });
-
+ 
       setFormData({ name: "", email: "", mobile: "", subject: "", message: "" });
       setErrors({});
+
+      emailjs.sendForm(
+        'service_e2o1m0k',
+        'template_y7i86oz',
+        form.current,
+        '_TW_0quAh3kZuz1yR',
+        {
+          to_email: 'Connect@insourceprime.com'
+        
+        }
+      ).then(result => {
+        console.log('Email sent successfully:', result.text);
+      }).catch(emailError => {
+        console.error("Error sending email:", emailError);
+      });
+      
     } catch (error) {
       console.error("Error submitting form:", error);
       enqueueSnackbar("Failed to send message. Please try again.", {
