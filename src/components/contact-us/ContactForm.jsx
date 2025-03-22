@@ -8,13 +8,15 @@ import { enqueueSnackbar } from "notistack";
 import { motion } from "framer-motion";
 import { fadeIn, staggerContainer } from "../../shared/animation/Motion";
 import emailjs from '@emailjs/browser';
+import PhoneInput from 'react-phone-input-2';
+import 'react-phone-input-2/lib/style.css';
 
 const ContactForm = () => {
   const form = useRef();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    mobile: "",
+    phone: "", // This will store the full phone number with country code
     subject: "",
     message: "",
   });
@@ -43,6 +45,20 @@ const ContactForm = () => {
     }
   };
 
+  // Special handler for phone input
+  const handlePhoneChange = (value) => {
+    setFormData((prevState) => ({
+      ...prevState,
+      phone: value,
+    }));
+
+    if (errors.phone) {
+      const newErrors = { ...errors };
+      delete newErrors.phone;
+      setErrors(newErrors);
+    }
+  };
+
   const validateForm = () => {
     const newErrors = {};
 
@@ -51,7 +67,13 @@ const ContactForm = () => {
     if (formData.email && !/\S+@\S+\.\S+/.test(formData.email)) {
       newErrors.email = "Email address is invalid";
     }
-    if (!formData.mobile) newErrors.mobile = "Mobile number is required";
+    
+    if (!formData.phone) {
+      newErrors.phone = "Phone number is required";
+    } else if (formData.phone.length < 10) {
+      newErrors.phone = "Please enter a valid phone number";
+    }
+    
     if (!formData.subject) newErrors.subject = "Subject is required";
 
     setErrors(newErrors);
@@ -69,17 +91,29 @@ const ContactForm = () => {
   
     try {
       await addDoc(collection(db, "contacts"), {
-        ...formData,
+        name: formData.name,
+        email: formData.email,
+        mobile: formData.phone, // Store the full phone with country code
+        subject: formData.subject,
+        message: formData.message,
         isRead: false,
         createdAt: serverTimestamp(),
       });
+      
       enqueueSnackbar("Message sent successfully!", {
         variant: "success",
         anchorOrigin: { vertical: "top", horizontal: "right" },
         autoHideDuration: 2000,
       });
  
-      setFormData({ name: "", email: "", mobile: "", subject: "", message: "" });
+      // Reset form
+      setFormData({ 
+        name: "", 
+        email: "", 
+        phone: "", 
+        subject: "", 
+        message: "" 
+      });
       setErrors({});
 
       emailjs.sendForm(
@@ -89,7 +123,6 @@ const ContactForm = () => {
         '_TW_0quAh3kZuz1yR',
         {
           to_email: 'Connect@insourceprime.com'
-        
         }
       ).then(result => {
         console.log('Email sent successfully:', result.text);
@@ -144,16 +177,60 @@ const ContactForm = () => {
             <p className="mb-6 text-lg text-white">We'd love to hear from you. Fill out the form below, and we'll get back to you as soon as possible.</p>
 
             <form ref={form} onSubmit={handleSubmit} className="space-y-4">
-              <InputField type="text" name="name" value={formData.name} onChange={handleChange} placeholder="Your Name" />
+              <InputField 
+                type="text" 
+                name="name" 
+                value={formData.name} 
+                onChange={handleChange} 
+                placeholder="Your Name" 
+              />
               {errors.name && <div className="mt-1 text-sm text-red-500">{errors.name}</div>}
 
-              <InputField type="email" name="email" value={formData.email} onChange={handleChange} placeholder="Your Email" />
+              <InputField 
+                type="email" 
+                name="email" 
+                value={formData.email} 
+                onChange={handleChange} 
+                placeholder="Your Email" 
+              />
               {errors.email && <div className="mt-1 text-sm text-red-500">{errors.email}</div>}
 
-              <InputField type="text" name="mobile" value={formData.mobile} onChange={handleChange} placeholder="Your Mobile" />
-              {errors.mobile && <div className="mt-1 text-sm text-red-500">{errors.mobile}</div>}
+              {/* Phone input with country selector */}
+              <div className="phone-input-container">
+                <PhoneInput
+                  country={'ae'} // Default country (UAE)
+                  value={formData.phone}
+                  onChange={handlePhoneChange}
+                  inputProps={{
+                    name: 'phone',
+                    required: true,
+                    autoFocus: false
+                  }}
+                  containerStyle={{ width: '100%' }}
+                  inputStyle={{ 
+                    width: '100%', 
+                    height: '50px', 
+                    fontSize: '16px',
+                    borderRadius: '0.5rem'
+                  }}
+                  buttonStyle={{
+                    backgroundColor: 'white',
+                    borderTopLeftRadius: '0.5rem',
+                    borderBottomLeftRadius: '0.5rem',
+                  }}
+                  dropdownStyle={{
+                    width: '300px'
+                  }}
+                />
+              </div>
+              {errors.phone && <div className="mt-1 text-sm text-red-500">{errors.phone}</div>}
 
-              <select name="subject" value={formData.subject} onChange={handleChange} className="w-full p-3 text-black bg-white rounded-lg">
+              <select 
+                name="subject" 
+                value={formData.subject} 
+                onChange={handleChange} 
+                className="w-full p-3 text-black bg-white rounded-lg"
+              >
                 <option value="">Select Subject</option>
                 <option value="Corporate Bank Account Opening">Corporate Bank Account Opening</option>
                 <option value="Offshore Bank Account Opening">Offshore Bank Account Opening</option>
@@ -164,7 +241,12 @@ const ContactForm = () => {
               </select>
               {errors.subject && <div className="mt-1 text-sm text-red-500">{errors.subject}</div>}
 
-              <TextareaField name="message" value={formData.message} onChange={handleChange} placeholder="Your Message (Optional)" />
+              <TextareaField 
+                name="message" 
+                value={formData.message} 
+                onChange={handleChange} 
+                placeholder="Your Message (Optional)" 
+              />
 
               <button
                 type="submit"
